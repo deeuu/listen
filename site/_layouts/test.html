@@ -28,8 +28,9 @@
      class='ui-corner-all ui-popup ui-body-a ui-overlay-shadow submit-popup'
      data-theme='b'>
 
-<form method="results"
-      action="https://api.staticman.net/v2/entry/deeuu/listen/gh-pages">
+<form method="post"
+      action="https://api.staticman.net/v2/entry/{{ site.github.username }}/{{
+      site.github.repository }}/{{ site.github.branch }}">
 <h2>Thank you, please submit your data:</h2>
 <input name="options[redirect]" type="hidden" value="www.google.com">
 

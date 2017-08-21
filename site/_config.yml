@@ -1,12 +1,18 @@
 # Site Settings
-title: Listen
-email: contactdominicward+github@gmail.com
+title: "Listen"
+email: "contactdominicward+github@gmail.com"
 description: >
-    Blank
+    "Blank"
 baseurl: ""
-url: https://deeuu.github.io/listen
+url: "https://deeuu.github.io/listen"
 permalink: /:title/
-github_username: deeuu
+github:
+    - username: "deeuu"
+    - repository : "listen"
+    - branch: "listen"
+
+staticman:
+    branch: "gh-pages"
 # Build Settings
 sass:
   sass_dir: assets/_sass
