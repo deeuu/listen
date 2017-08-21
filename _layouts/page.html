@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+{% include head.html %}
+
+<body>
+
+<div data-role='page'>
+
+    {% include menu.html %}
+
+    <div data-role="header">
+
+    <!-- Configuration of back button -->
+    {% if page.back_url %}
+    <a 
+    href="{{ site.url }}"
+    data-rel="back"
+    class='ui-btn-left ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-left ui-icon-carat-l'>
+    Back
+    </a>
+    {% endif %}
+
+    <!-- Main header title -->
+    <h1 class='title'> {{ page.title }} </h1>
+
+    <!-- Configuration of next button -->
+    {% if page.next_url %}
+    <a 
+    href="{{ site.url }}{{ page.next_url }}"
+    class='ui-btn-right ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-right ui-icon-carat-r'>
+    Next
+    </a>
+    {% endif %}
+
+    </div>
+
+    <div data-role="main" class="ui-content">
+    {{ content }}
+    </div>
+
+</div>
+
+</body>
+
+</html>

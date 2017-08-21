@@ -1,0 +1,15 @@
+# Site Settings
+title: Listen
+email: contactdominicward+github@gmail.com
+description: >
+  A guide to getting started with Jekyll.
+baseurl: ""
+url: ""
+permalink: /:title/
+github_username:  deeuu
+# Build Settings
+sass:
+  sass_dir: assets/_sass
+include: ['_pages']
+kramdown:
+  input: GFM
