@@ -1,0 +1,67 @@
+<div data-role='page'>
+
+<div data-role="header">
+
+<a 
+    class='ui-btn-left ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-left ui-icon-carat-l previous-test'>
+    Previous test
+</a>
+
+<h1 class='title'></h1>
+
+<a 
+    class='ui-btn-right ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-right ui-icon-carat-r next-test'>
+    Next test
+</a>
+</div>
+
+<!-- Popup window if all listener tries to move on before listening to all samples -->
+<div data-role="popup" class="listen-to-all-samples-popup" data-position-to="window" data-transition="turn">
+    <p>Please listen to all samples before moving on</p>
+</div>
+
+<!-- Popup window for submissions -->
+<div data-role='popup'
+     data-position-to='window'
+     class='ui-corner-all ui-popup ui-body-a ui-overlay-shadow submit-popup'
+     data-theme='b'>
+
+<form>
+<h2>Thank you, please submit your data:</h2>
+
+<input name='Subject' 
+       value='My name'
+       type='text'
+       >
+
+<input type='submit'
+       value='Submit'>
+</form>
+</div>
+
+<!-- Main layout -->
+<div data-role="main" class="ui-content">
+{{ content }}
+</div>
+
+<!-- JS for interface instantiation -->
+<script type="text/javascript">
+{% assign config = site.data[page.config_file] %}
+$(document).on('pageshow', function() {
+
+    var config = JSON.parse('{{ config | jsonify}}');
+    config.siteURL = "{{ site.url }}";
+
+    var layout = '{{ page.layout }}';
+
+    if (layout == 'mushra')
+    {
+        var testInterface = new Mushra (config);
+    }
+
+});
+</script>
+
+</div>
