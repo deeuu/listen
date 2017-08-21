@@ -4,7 +4,7 @@ email: contactdominicward+github@gmail.com
 description: >
     Blank
 baseurl: ""
-url: https://deeuu.github.io/listen/
+url: https://deeuu.github.io/listen
 permalink: /:title/
 github_username: deeuu
 # Build Settings
