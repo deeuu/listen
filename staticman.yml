@@ -6,7 +6,11 @@
 #
 # Names of the fields the form is allowed to submit. If a field that is
 # not here is part of the request, an error will be thrown.
-allowedFields: ["name", "email", "url", "message"]
+allowedFields:
+    - "name"
+    - "email"
+    - "url"
+    - "message"
 
 # (*) REQUIRED
 #
@@ -15,7 +19,7 @@ allowedFields: ["name", "email", "url", "message"]
 branch: "gh-pages"
 
 # Text to use as the commit message or pull request title. Accepts placeholders.
-commitMessage: "Add Staticman data"
+commitMessage: "Staticman data"
 
 # (*) REQUIRED
 #
@@ -25,16 +29,6 @@ filename: "entry{@timestamp}"
 # The format of the generated data files. Accepted values are "json", "yaml"
 # or "frontmatter"
 format: "yaml"
-
-# List of fields to be populated automatically by Staticman and included in
-# the data file. Keys are the name of the field. The value can be an object
-# with a `type` property, which configures the generated field, or any value
-# to be used directly (e.g. a string, number or array)
-generatedFields:
-date:
-  type: date
-  options:
-    format: "timestamp-seconds"
 
 # Whether entries need to be appproved before they are published to the main
 # branch. If set to `true`, a pull request will be created for your approval.
@@ -47,6 +41,6 @@ name: "deeuu.github.io/listen"
 # Destination path (directory) for the data files. Accepts placeholders.
 path: "_data/results/{@timestamp}"
 
-allowedOrigins: 
+allowedOrigins:
     - localhost
     - deeuu.gitlab.io
