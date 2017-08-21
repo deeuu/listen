@@ -4,9 +4,9 @@ email: contactdominicward+github@gmail.com
 description: >
     Blank
 baseurl: ""
-url: ""
+url: https://deeuu.github.io/listen/
 permalink: /:title/
-github_username:  deeuu
+github_username: deeuu
 # Build Settings
 sass:
   sass_dir: assets/_sass
