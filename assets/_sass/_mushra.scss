@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.mushra-container {
+    height: 100%;
+    text-align: center;
+}
+
+.mushra-container table {
+    table-layout: fixed;
+    font-size: 0.8em;
+    width: 80%;
+    margin-left:10%;
+}
+
+.mushra-table table, th, td {
+    border: 1px solid black;
+}
+
+.mushra-slider-container {
+    text-align: center;
+    display: table;
+    margin: 0px auto;
+    width: 100%;
+};
+
+.mushra-slider-container .ui-slider-input {
+    width: 40px;
+    font-size: 0.8em;
+    border-width: 0;
+    text-align: left;
+}
+
+.mushra-slider-container .ui-slider-track {
+    width: 80%;
+    margin-left:10%;
+}
