@@ -6,16 +6,16 @@ description: >
 baseurl: ""
 url: "https://deeuu.github.io/listen"
 permalink: /:title/
-github:
-    - username: "deeuu"
-    - repository : "listen"
-    - branch: "listen"
 
-staticman:
+github:
+    username: "deeuu"
+    repository : "listen"
     branch: "gh-pages"
+
 # Build Settings
 sass:
   sass_dir: assets/_sass
-include: ['_pages']
+include: 
+    - '_pages'
 kramdown:
   input: GFM

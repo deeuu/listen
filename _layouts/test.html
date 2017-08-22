@@ -31,8 +31,10 @@
 <form method="post"
       action="https://api.staticman.net/v2/entry/{{ site.github.username }}/{{
       site.github.repository }}/{{ site.github.branch }}">
+
 <h2>Thank you, please submit your data:</h2>
-<input name="options[redirect]" type="hidden" value="www.google.com">
+
+<input name="options[redirect]" type="hidden" value='{{ site.url }}'>
 
 <input name='fields[name]' 
        value='My name'
