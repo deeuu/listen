@@ -2,13 +2,28 @@ function Mushra(config) {
 
     this.config = config;
     this.pageCounter = 0;
+    this.numberOfSounds = 0;
     this.numberOfPages = this.config.pages.length;
-
     this.have_seen_this_page_before = arrayFilledWith(false, this.numberOfPages);
 
+    // Order of pages
     this.pageOrder = fromAToBArray(0, this.numberOfPages);
     if (this.config.randomise_pages)
         shuffle(this.pageOrder);
+
+    // Order of sounds within page
+    this.soundOrder = [];
+    for (var i = 0; i < this.numberOfPages; ++i)
+    {
+        var numberOfSounds = this.config.pages[this.pageOrder[i]].sounds.length;
+        var order = fromAToBArray(0, numberOfSounds);
+        if (this.config.randomise_sounds_within_page)
+            shuffle(order);
+        this.soundOrder.push(order);
+    }
+
+    console.log(this.pageOrder);
+    console.log(this.soundOrder);
 
     this.configureNextAndBackButton();
     this.loadPage();
@@ -76,26 +91,19 @@ Mushra.prototype.loadPage = function()
     if (this.loader)
         this.loader.stop();
 
-    // audio URLs and associated IDs
     this.currentPage = this.pageOrder[this.pageCounter];
+    this.currentPageSoundOrder = this.soundOrder[this.pageCounter];
+    var numberOfSounds = this.currentPageSoundOrder.length;
 
-    var order = fromAToBArray(0, this.config.pages[this.currentPage].sounds.length);
+    this.urls = new Array(numberOfSounds);
 
-    if (this.config.randomise_order)
-        shuffle(order);
-
-    this.urls = new Array(order.length);
-    this.ids = new Array(order.length);
-
-    for (var j = 0; j < order.length; ++j)
+    for (var i = 0; i < numberOfSounds; ++i)
     {
-        var thisSound = this.config.pages[this.currentPage].sounds[order[j]];
-        this.urls[j] = this.config.siteURL + '/' + thisSound.url;
-        this.ids[j] = this.config.id + thisSound.id;
+        var thisSound = this.config.pages[this.currentPage].sounds[this.currentPageSoundOrder[i]];
+        this.urls[i] = this.config.siteURL + '/' + thisSound.url;
     }
 
     // Add the url to the reference audio. No need to store id here.
-    var referenceIdx = this.urls.length;
     this.urls.push(
         this.config.siteURL + '/' + this.config.pages[this.currentPage].reference_url);
 
@@ -111,7 +119,7 @@ Mushra.prototype.loadPage = function()
     // Reference
     $activePage ('.mushra-reference').on("click", function(i){
         this.loader.play(i);
-    }.bind(this, referenceIdx));
+    }.bind(this, numberOfSounds));
 
     this.createSliders();
 
@@ -123,16 +131,14 @@ Mushra.prototype.createSliders = function()
 {
     $activePage ('.mushra-slider-container').empty();
 
-    var randomiseSliders = (this.config.randomise_slider_handle &&
-                            !this.have_seen_this_page_before[this.pageCounter]);
-
-    for (var i = 0; i < this.ids.length; ++i)
+    var numberOfSounds = this.currentPageSoundOrder.length;
+    for (var i = 0; i < numberOfSounds; ++i)
     {
         var startVal = 0;
-        if (randomiseSliders)
+        if (this.have_seen_this_page_before[this.pageCounter])
+            startVal = this.config.pages[this.currentPage].sounds[this.currentPageSoundOrder[i]].rating;
+        else if (this.config.randomise_slider_handle)
             startVal = randomNumber(0, 100, true);
-        else
-            startVal = this.config.pages[this.pageCounter].sounds[i].rating;
 
         // The slider, triggers audio when user makes adjustment.
         var inputHTML = "<input type='range' name='slider' " +
@@ -166,39 +172,83 @@ Mushra.prototype.createSliders = function()
 
 Mushra.prototype.fillConfig = function()
 {
-    var setRating = function(i, value)
-    {
-        this.config.pages[this.pageCounter].sounds[i].rating = value;
+    var setRating = function(i, value) {
+        this.config.pages[this.currentPage].sounds[this.currentPageSoundOrder[i]].rating = value;
     }.bind(this);
 
-    $activePage (".mushra-slider").each(
-    function (i) {
+    $activePage (".mushra-slider").each( function (i) {
         setRating (i, $(this).val());
     });
 }
 
 Mushra.prototype.complete = function()
 {
-    //$.mobile.pageContainer.pagecontainer("change", "#submit");
-    $activePage ('.submit-popup').popup('open');
+    // Build an array of arrays for the ratings
+    var values = '[';
+    var sounds = '[';
+    var pages = '[';
 
-    /*
-    $activePage ('submit-popup').on('click', function(form){
+    for (var i = 0; i < this.numberOfPages; ++i)
+    {
+        values += '[';
+        sounds += '[';
 
-        for (var i = 0; i < this.numberOfPages; ++i)
+        var numSounds = this.config.pages[i].sounds.length;
+
+        for (var j = 0; j < numSounds; ++j)
         {
-            values = '';
-            for (var j = 0; j < this.config.pages[i].sounds.length; ++j)
-                values += this.config.pages[i].sounds[j].rating + ',';
+            values += this.config.pages[i].sounds[j].rating;
+            sounds += this.config.pages[i].sounds[j].name;
 
-            var pageInput = document.createElement("input");
-            pageInput.name = this.config.pages[i].name;
-            pageInput.value = values;
-
-            form.appendChild(pageInput);
+            if (j == numSounds - 1)
+            {
+                values += ']';
+                sounds += ']';
+            }
+            else
+            {
+                values += ',';
+                sounds += ',';
+            }
         }
-    }.bind(this, $('mushra-form')));
-    */
+
+
+        pages += this.config.pages[i].name;
+        if (i == this.numberOfPages - 1)
+        {
+            pages += ']';
+            values += ']';
+            sounds += ']';
+        }
+        else
+        {
+            pages += ',';
+            values += '],';
+            sounds += '],';
+        }
+    }
+
+    // Append inputs to the form
+    $('<input>').attr({
+            type: 'hidden',
+            name: 'fields[data]',
+            value: values,
+        }).appendTo ('div.submit-popup > form');
+
+    $('<input>').attr({
+            type: 'hidden',
+            name: 'fields[sounds]',
+            value: sounds,
+        }).appendTo ('div.submit-popup > form');
+
+    $('<input>').attr({
+            type: 'hidden',
+            name: 'fields[pages]',
+            value: pages,
+        }).appendTo ('div.submit-popup > form');
+
+    $activePage ('.submit-popup').popup('open');
+    console.log($activePage ('div.submit-popup > form'));
 }
 
 Mushra.prototype.updatePageCounter = function()

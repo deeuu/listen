@@ -1,3 +1,5 @@
+{% assign config = site.data[page.config_file] %}
+
 <div data-role='page'>
 
 <div data-role="header">
@@ -36,10 +38,15 @@
 
 <input name="options[redirect]" type="hidden" value='{{ site.url }}'>
 
-<input name='fields[name]' 
+<input name='fields[name]'
        value='My name'
        type='text'
-       >
+>
+
+<input name='fields[experiment_id]'
+       value='{{ config.experiment_id }}'
+       type='hidden'
+>
 
 <input type='submit'
        value='Submit'>
@@ -53,7 +60,6 @@
 
 <!-- JS for interface instantiation -->
 <script type="text/javascript">
-{% assign config = site.data[page.config_file] %}
 $(document).on('pageshow', function() {
 
     var config = JSON.parse('{{ config | jsonify}}');

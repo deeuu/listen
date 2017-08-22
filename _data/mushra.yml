@@ -1,11 +1,11 @@
+experiment_id: 'quality'
 continuous_playback: true
 loop_playback: true
 randomise_slider_handle: true
-randomise_order: true
+randomise_sounds_within_page: true
 randomise_pages: true
 include_number_box: true
 must_play_all_samples_to_continue: false
-experiment_id: 'quality'
 labels:
     - 'Bad'
     - 'Poor'
@@ -16,18 +16,18 @@ pages:
     - name: 'Set 1'
       reference_url: sounds/dog1.wav
       sounds:
-          - id: 'Ref'
+          - name: 'Ref'
             url: sounds/dog1.wav
-          - id: 1
+          - name: 1
             url: sounds/dog2.wav
-          - id: 2
+          - name: 2
             url: sounds/dog3.wav
     - name: 'Set 2'
       reference_url: sounds/dog4.wav
       sounds:
-          - id: 'Ref'
+          - name: 'Ref'
             url: sounds/dog4.wav
-          - id: 1
+          - name: 1
             url: sounds/dog5.wav
-          - id: 2
+          - name: 2
             url: sounds/dog6.wav

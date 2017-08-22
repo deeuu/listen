@@ -8,12 +8,11 @@
 # not here is part of the request, an error will be thrown.
 allowedFields:
     - "name"
-    - "email"
-    - "url"
-    - "message"
+    - "data"
+    - "sounds"
+    - "pages"
+    - "experiment_id"
 
-# (*) REQUIRED
-#
 # Name of the branch being used. Must match the one sent in the URL of the
 # request.
 branch: "gh-pages"
@@ -21,8 +20,6 @@ branch: "gh-pages"
 # Text to use as the commit message or pull request title. Accepts placeholders.
 commitMessage: "New submission"
 
-# (*) REQUIRED
-#
 # Destination path (filename) for the data files. Accepts placeholders.
 filename: "submission_{@timestamp}"
 
