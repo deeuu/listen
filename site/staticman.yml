@@ -19,12 +19,12 @@ allowedFields:
 branch: "gh-pages"
 
 # Text to use as the commit message or pull request title. Accepts placeholders.
-commitMessage: "Staticman data"
+commitMessage: "New submission"
 
 # (*) REQUIRED
 #
 # Destination path (filename) for the data files. Accepts placeholders.
-filename: "entry{@timestamp}"
+filename: "submission_{@timestamp}"
 
 # The format of the generated data files. Accepted values are "json", "yaml"
 # or "frontmatter"
@@ -39,7 +39,7 @@ moderation: true
 name: "deeuu.github.io/listen"
 
 # Destination path (directory) for the data files. Accepts placeholders.
-path: "_data/results/{@timestamp}"
+path: "_data/results/"
 
 allowedOrigins:
     - localhost
