@@ -1,0 +1,7 @@
+_id: b57e4780-8743-11e7-9a1c-eb175327de3f
+name: My name
+experiment_id: quality
+data: '[[42,85,82]],[48,98,64]]'
+sounds: '[[Ref,1,2]],[Ref,1,2]]'
+pages: '[Set 1,Set 2]'
+date: 1503411053
