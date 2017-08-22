@@ -11,15 +11,18 @@
 {% for link in links %}
 
 {% if link.sublinks %}
-    <div data-role="collapsible" data-collapsed="true" class="inner-collapsible"
-                                                       data-collapsed-icon="carat-d"
-                                                       data-expanded-icon="carat-u">
+    <div data-role="collapsible"
+         data-collapsed="true"
+         class="inner-collapsible menu"
+         data-collapsed-icon="carat-d"
+         data-expanded-icon="carat-u">
     <h4>{{ link.title }}</h4>
 
     <ul data-role="listview">
     {% for sublink in link.sublinks %}
     <li data-icon="false">
-        <a href="{{ site.url }}{{ sublink.url }}">{{ sublink.title }}</a>
+        <a class='page-link'
+            href="{{ site.url }}{{ sublink.url }}">{{ sublink.title }}</a>
     </li>
     {% endfor %}
     </ul>
@@ -28,7 +31,7 @@
 {% else %}
 
     <li data-icon="false">
-    <a href="{{ site.url }}{{ link.url }}">{{ link.title }}</a>
+    <a class='page-link' href="{{ site.url }}{{ link.url }}">{{ link.title }}</a>
     </li>
 
 {% endif %}
