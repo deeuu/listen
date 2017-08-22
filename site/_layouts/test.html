@@ -44,7 +44,7 @@
 >
 
 <input name='fields[experiment_id]'
-       value='{{ config.experiment_id }}'
+       value='{{ page.url }}'
        type='hidden'
 >
 
@@ -67,7 +67,7 @@ $(document).on('pageshow', function() {
 
     var layout = '{{ page.layout }}';
 
-    if (layout == 'mushra')
+    if (layout == 'mushra' || layout == 'similarity')
     {
         var testInterface = new Mushra (config);
     }
