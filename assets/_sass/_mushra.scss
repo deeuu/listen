@@ -1,19 +1,27 @@
 @charset "UTF-8";
 
 .mushra-container {
-    height: 100%;
     text-align: center;
 }
 
 .mushra-container table {
+
     table-layout: fixed;
-    font-size: 0.8em;
+    font-size: 1em;
+
     width: 80%;
-    margin-left:10%;
+    margin-left: 10%;
+
+    @media only screen and (max-width: $breakpoint) {
+        font-size: 0.7em;
+        width: 100%;
+        margin-left: 0;
+    }
 }
 
 .mushra-table table, th, td {
     border: 1px solid black;
+
 }
 
 .mushra-slider-container {
@@ -28,9 +36,19 @@
     font-size: 0.8em;
     border-width: 0;
     text-align: left;
+
+    @media only screen and (max-width: $breakpoint) {
+        display: none;
+    }
 }
 
 .mushra-slider-container .ui-slider-track {
+
     width: 80%;
-    margin-left:10%;
+    margin-left: 10%;
+
+    @media only screen and (max-width: $breakpoint) {
+        width: 100%;
+        margin-left: 0;
+    }
 }

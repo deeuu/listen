@@ -22,9 +22,6 @@ function Mushra(config) {
         this.soundOrder.push(order);
     }
 
-    console.log(this.pageOrder);
-    console.log(this.soundOrder);
-
     this.configureNextAndBackButton();
     this.loadPage();
 }
@@ -248,7 +245,6 @@ Mushra.prototype.complete = function()
         }).appendTo ('div.submit-popup > form');
 
     $activePage ('.submit-popup').popup('open');
-    console.log($activePage ('div.submit-popup > form'));
 }
 
 Mushra.prototype.updatePageCounter = function()
