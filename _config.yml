@@ -5,17 +5,16 @@ description: >
     "Blank"
 baseurl: ""
 url: "https://deeuu.github.io/listen"
-permalink: /:title/
 
 github:
     username: "deeuu"
     repository : "listen"
     branch: "gh-pages"
 
-# Build Settings
-sass:
-  sass_dir: assets/_sass
+# Build Setting
 include: 
     - '_pages'
+sass:
+  sass_dir: assets/_sass
 kramdown:
   input: GFM

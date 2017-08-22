@@ -1,7 +1,7 @@
 ---
 layout: mushra
-permalink: "/mushra/"
 config_file: mushra
+permalink: /mushra/
 title: MUSHRA
 ---
 

@@ -10,13 +10,14 @@ layout: test
 <button class="mushra-reference" data-inline="true">Reference</button>
 <button class="mushra-stop" data-inline="true">Stop</button>
 
-<table class='mushra-table'>
+{% if config.labels %}
+<table class='similarity-table'>
 <tr>
-{% for label in config.labels %}
-<th>{{ label }}</th>
-{% endfor %}
+<th class='left-label'>{{ config.labels[0] }}</th>
+<th class='right-label'>{{ config.labels[1] }}</th>
 </tr>
 </table>
+{% endif %}
 
 <div class="mushra-slider-container" data-role="ui-content"></div>
 
