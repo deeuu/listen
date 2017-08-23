@@ -142,9 +142,9 @@ Mushra.prototype.createSliders = function()
         "value='" + startVal + "' min='0' max='100'";
 
         if (this.config.include_number_box)
-            inputHTML += "class='mushra-slider'/>";
+            inputHTML += "/>";
         else
-            inputHTML += "class='ui-hidden-accessible mushra-slider'/>";
+            inputHTML += "class='ui-hidden-accessible'/>";
 
         $activePage ('.mushra-slider-container').append(inputHTML);
     }
@@ -156,13 +156,18 @@ Mushra.prototype.createSliders = function()
             this.loader.play(i)
     }.bind(this);
 
-    $activePage (".mushra-slider").each(function (i) {
+    $activePage (".ui-slider").each(function (i) {
 
-        $(this).bind('slidestart', function (i) {
+        $(this).on('slidestart', function (i) {
+
             // play this audio file
             playFunc (i);
-            // change the theme when slider is moved
-            $(this).attr('data-theme', 'c');
+            // change handle colour when slider is moved
+            $(this).find('a').addClass('slider-handle-active');
+            // Give focus to the handle even if handle is clicked
+            $(this).find('a').focus();
+
+
         }.bind(this, i));
     });
 }
