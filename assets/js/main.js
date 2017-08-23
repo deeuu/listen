@@ -1,8 +1,8 @@
 ---
 ---
 
-{% include_relative menu.js %}
-{% include_relative utils.js %}
-{% include_relative audioloader.js %}
-{% include_relative soundboard.js %}
-{% include_relative mushra.js %}
+{% include_relative _menu.js %}
+{% include_relative _utils.js %}
+{% include_relative _audioloader.js %}
+{% include_relative _soundboard.js %}
+{% include_relative _mushra.js %}

@@ -32,12 +32,5 @@ format: "yaml"
 # Otherwise, entries will be published to the main branch automatically.
 moderation: true
 
-# Name of the site. Used in notification emails.
-name: "deeuu.github.io/listen"
-
 # Destination path (directory) for the data files. Accepts placeholders.
-path: "_data/results/"
-
-allowedOrigins:
-    - localhost
-    - deeuu.gitlab.io
+path: "_data/results/{options.slug}"
