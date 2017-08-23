@@ -178,7 +178,7 @@ Mushra.prototype.fillConfig = function()
         this.config.pages[this.currentPage].sounds[this.currentPageSoundOrder[i]].rating = value;
     }.bind(this);
 
-    $activePage (".mushra-slider").each( function (i) {
+    $activePage (".ui-slider input").each( function (i) {
         setRating (i, $(this).val());
     });
 }
