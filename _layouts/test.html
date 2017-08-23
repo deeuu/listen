@@ -36,6 +36,7 @@
 
 <h2>Thank you, please submit your data:</h2>
 
+<input name="options[slug]" type="hidden" value='{{ page.url  | slugify}}'>
 <input name="options[redirect]" type="hidden" value='{{ site.url }}'>
 
 <input name='fields[name]'
@@ -44,7 +45,7 @@
 >
 
 <input name='fields[experiment_id]'
-       value='{{ page.url }}'
+       value='{{ page.url  | slugify}}'
        type='hidden'
 >
 
