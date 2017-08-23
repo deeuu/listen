@@ -15,16 +15,16 @@
     }
 }
 
-.similarity-table table, th, td {
+.similarity-table th {
+    color: $heading-font-color;
     border: 0px;
 }
 
 .similarity-table .left-label {
     text-align: left;
-    color: $cyan;
 }
 
 .similarity-table .right-label {
     text-align: right;
-    color: $cyan;
+    color: $heading-font-color;
 }

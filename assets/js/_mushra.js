@@ -162,7 +162,7 @@ Mushra.prototype.createSliders = function()
             // play this audio file
             playFunc (i);
             // change the theme when slider is moved
-            $(this).attr('data-theme', 'b');
+            $(this).attr('data-theme', 'c');
         }.bind(this, i));
     });
 }
