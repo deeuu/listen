@@ -1,0 +1,11 @@
+_id: d7579870-8e41-11e7-b692-5be3d941184b
+name: Hagen
+experiment_id: interferer
+data: >-
+  [[12,32,12,13,0,55,100,100]],[57,1,100,100,100,100,38,11]],[12,64,27,20,0,100,100,71]],[0,100,47,100,35,33,4,7]],[100,45,20,0,100,8,100,8]],[68,1,100,94,100,13,19,31]],[25,57,0,100,2,100,18,13]],[0,100,22,100,67,67,34,12]],[100,37,0,100,100,18,48,7]],[24,73,0,44,99,70,99,19]],[19,0,20,99,51,100,33,7]],[25,25,0,25,100,85,25,4]],[46,17,0,100,100,9,90,13]],[0,100,96,100,52,24,7,7]],[20,0,45,100,100,85,36,13]],[67,0,99,100,50,22,15,5]]
+sounds: >-
+  [[UHL3,GRA2,KAM2,KON,Interferer,NUG3,ref,Quality]],[CHA,Interferer,ref,Quality,KAM1,DUR,OZE,HUA]],[CHA,KAM2,STO2,KON,Interferer,ref,Quality,UHL2]],[Interferer,ref,STO1,Quality,JEO2,NUG1,HUA,RAF3]],[KAM2,STO2,KON,Interferer,ref,RAF2,Quality,RAF3]],[CHA,Interferer,ref,STO1,Quality,RAF1,OZE,HUA]],[UHL3,STO2,Interferer,ref,RAF2,Quality,DUR,HUA]],[Interferer,ref,RAF2,Quality,JEO2,KAM1,NUG4,HUA]],[GRA2,KON,Interferer,ref,Quality,JEO2,UHL2,RAF1]],[GRA3,KON,Interferer,JEO1,ref,STO1,Quality,HUA]],[KAM2,Interferer,JEO1,ref,UHL1,Quality,DUR,HUA]],[UHL3,CHA,Interferer,NUG3,ref,Quality,KAM1,OZE]],[UHL3,KAM2,Interferer,ref,Quality,RAF1,NUG4,HUA]],[Interferer,ref,STO1,Quality,KAM1,DUR,HUA,RAF3]],[UHL3,Interferer,NUG3,ref,Quality,KAM1,DUR,OZE]],[KON,Interferer,ref,Quality,KAM1,DUR,OZE,HUA]]
+pages: >-
+  [vocals-20-SAR,vocals-11-SAR,vocals-42-SAR,vocals-17-SIR,vocals-12-SAR,vocals-18-SIR,vocals-26-SIR,vocals-30-SIR,vocals-25-SAR,vocals-19-SIR,vocals-33-SIR,vocals-47-SAR,vocals-45-SIR,vocals-41-SIR,vocals-38-SAR,vocals-48-SAR]
+date: 1504179909
+timestamp: 1504179909
