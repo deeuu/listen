@@ -1,0 +1,30 @@
+continuous_playback: true
+include_number_box: true
+labels:
+- Much interference
+- No interference
+loop_playback: true
+must_play_all_samples_to_continue: true
+pages:
+- name: vocals-49-SAR
+  reference_url: sounds/training/vocals-49-SAR/ref.wav
+  sounds:
+  - name: UHL3
+    url: sounds/training/vocals-49-SAR/UHL3.wav
+  - name: GRA3
+    url: sounds/training/vocals-49-SAR/GRA3.wav
+  - name: OZE
+    url: sounds/training/vocals-49-SAR/OZE.wav
+  - name: KON
+    url: sounds/training/vocals-49-SAR/KON.wav
+  - name: Interferer
+    url: sounds/training/vocals-49-SAR/Interferer.wav
+  - name: NUG3
+    url: sounds/training/vocals-49-SAR/NUG3.wav
+  - name: ref
+    url: sounds/training/vocals-49-SAR/ref.wav
+  - name: Quality
+    url: sounds/training/vocals-49-SAR/Quality.wav
+randomise_pages: true
+randomise_slider_handle: true
+randomise_sounds_within_page: true
