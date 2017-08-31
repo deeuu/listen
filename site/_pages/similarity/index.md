@@ -1,6 +1,6 @@
 ---
 layout: similarity
-config_file: similarity
+config_file: quality
 permalink: /similarity/
 title: Similarity
 ---
