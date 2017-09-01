@@ -1,16 +1,42 @@
 ---
 layout: page
-title: Welcome
-next_url: /mushra/
+title:
 ---
-# Welcome to Listen
 
-Lorem ipsum ut suspendisse vivamus curabitur etiam accumsan, congue primis placerat venenatis molestie vitae mattis hendrerit, vestibulum sollicitudin taciti nostra senectus at.
+<h1 style="text-align: center;">Welcome to the listening test</h1>
 
-Eu arcu in eu in ut a nisl aliquet ipsum accumsan primis eu ultricies himenaeos, semper tempor at maecenas placerat rutrum sit lorem convallis semper nulla tincidunt vulputate quis quam euismod magna elit.
+This listening assessment is comprised of 2 parts:
 
-Lobortis tellus suspendisse lacinia sit nisi enim pretium, velit ultrices mi quisque fermentum augue odio primis, class sit tempor facilisis suscipit fringilla.
+* Test 1: **Sound quality**
+* Test 2: **Interference by other instruments**
 
-Id ut mauris in pellentesque velit cras vel tempor scelerisque consectetur ante massa, cubilia ut tempor arcu posuere etiam varius molestie ut curabitur.
+The order in which you take each test is set by the experimenter.
+Each test will take between 30 and 50 minutes.
 
-Viverra maecenas scelerisque aliquam faucibus ligula pharetra cursus, at cursus integer cubilia vestibulum curabitur ornare duis, nisl purus curae mollis habitasse mauris mattis pellentesque leo ipsum aliquet bibendum eleifend a nec.
+In both cases you will listen to 8 samples of an extraction of vocals and their
+backings from a song. You then rate according to the given perceptual attribute.
+This task is then repeated for a number of songs.
+Both experiments involve an initial training stage which will:
+
+- Allow you to familiarise yourself with the perceptual attribute we are
+  interested in.
+- Give you an opportunity to gain some intuition for the main interface.
+
+Please let the experimenter know if you have any questions or wish to take a
+break at any point!
+
+<div style="text-align: center;">
+
+  <h2 style="margin-top: 1cm;">Please enter your name here</h2>
+  Add box for name entering.
+
+  <h2 style="margin-top: 1cm;">Start your assigned experiment by clicking on the button</h2>
+
+  <a href="{{ site.url }}/familiarisation_quality" id="btn-quality" data-inline="true"
+          class="ui-btn ui-btn-inline ui-shadow ui-corner-all ui-icon-carat-r ui-btn-icon-right"
+          style="min-width: 350px;">Sound quality</a>
+  <a href="{{ site.url }}/familiarisation_interferer" id="btn-interferer" data-inline="true"
+          class=" ui-btn ui-btn-inline ui-shadow ui-corner-all ui-icon-carat-r ui-btn-icon-right"
+          style="min-width: 350px;">Interference by other instruments</a>
+
+</div>
