@@ -1,0 +1,13 @@
+_id: f902f150-8ef9-11e7-aead-6535dc6ea368
+name: XXX
+experiment_id: training-quality
+data:
+  - '[[67,16,22,19,67,31,49,76]]'
+  - '[[56,35,14,24,69,34,53,80]]'
+sounds:
+  - '[[UHL3,GRA3,OZE,KON,Interferer,NUG3,ref,Quality]]'
+  - '[[UHL3,GRA3,OZE,KON,Interferer,NUG3,ref,Quality]]'
+pages:
+  - '[vocals-49-SAR]'
+  - '[vocals-49-SAR]'
+date: '2017-09-01T09:43:13.777Z'
