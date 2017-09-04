@@ -5,10 +5,9 @@
 var AudioContext = window.AudioContext || window.webkitAudioContext;
 var audioContext = new AudioContext();
 
-function AudioLoader(urlList, callback) {
+function AudioLoader(urlList, continuousPlayback=true, loopPlayback=true) {
 
     this.urlList = urlList;
-    this.onload = callback;
     this.buffers = new Array(urlList.length);
 
     this.gainNodes = [audioContext.createGain(), audioContext.createGain()]
@@ -22,11 +21,11 @@ function AudioLoader(urlList, callback) {
 
     this.startedPlayingAtTime = null;
     this.fadeTime = 0.1;
-    this.currentIndex = 0;
-    this.continuousPlayback = true;
-    this.loopPlayback = false;
+    this.currentIndex = null;
+    this.onsetTime = 0;
+    this.continuousPlayback = continuousPlayback;
+    this.loopPlayback = loopPlayback;
     this.hasPlayed = []
-
 }
 
 AudioLoader.prototype.loadBuffer = function (url, index) {
@@ -73,52 +72,55 @@ AudioLoader.prototype.load = function() {
 
 AudioLoader.prototype.play = function (index=0, loop=false) {
 
-    this.stop();
-
-    // get an AudioBufferSourceNode for playing our buffer
-    this.source = audioContext.createBufferSource();
-
-    // buffer config
-    var buf = this.buffers[index];
-    this.source.buffer = buf;
-    this.source.loop = this.loopPlayback;
-    this.source.loopStart = false;
-
-    // ramping
-    var currentGainNode = this.gainNodes[this.gainNodeIndex];
-    this.source.connect(currentGainNode);
-
-    // Playhead calculation (but not sample accurate)
-    var onsetTime = 0;
-    if (this.continuousPlayback)
+    if (index != this.currentIndex)
     {
-        if (this.currentIndex == index)
-            this.startedPlayingAtTime = null;
+        this.stop();
 
-        this.currentIndex = index;
+        // get an AudioBufferSourceNode for playing our buffer
+        this.source = audioContext.createBufferSource();
 
-        if (this.startedPlayingAtTime == null)
+        // buffer config
+        var buf = this.buffers[index];
+        this.source.buffer = buf;
+        this.source.loop = this.loopPlayback;
+        this.source.loopStart = false;
+
+        if (!this.loopPlayback)
+            this.source.onended = this.resetContinuousPlay.bind(this);
+
+        // ramping
+        var currentGainNode = this.gainNodes[this.gainNodeIndex];
+        this.source.connect(currentGainNode);
+
+        // Playhead calculation (but not sample accurate)
+        if (this.continuousPlayback)
         {
-            this.startedPlayingAtTime = audioContext.currentTime;
-        }
-        else
-        {
-            onsetTime  = audioContext.currentTime - this.startedPlayingAtTime;
-
-            if (onsetTime > buf.duration)
+            if (this.currentIndex == null)
             {
-                this.startedPlayingAtTime = audioContext.currentTime;
-                onsetTime = 0
+                this.onsetTime = 0;
+            }
+            else
+            {
+                var prevBufDuration = this.buffers[this.currentIndex].duration;
+                this.onsetTime += (audioContext.currentTime - this.startedPlayingAtTime);
+
+                if (this.onsetTime > prevBufDuration)
+                    this.onsetTime = this.onsetTime % prevBufDuration;
+
+                if (this.onsetTime > buf.duration)
+                    this.onsetTime = 0;
             }
         }
+
+        this.hasPlayed[index] = true;
+        this.currentIndex = index;
+        this.startedPlayingAtTime = audioContext.currentTime;
+
+        this.source.start(0, this.onsetTime);
+        currentGainNode.gain.linearRampToValueAtTime(
+            1.0, audioContext.currentTime + this.fadeTime);
+
     }
-
-    this.source.start(0, onsetTime);
-    this.hasPlayed[index] = true;
-
-    currentGainNode.gain.linearRampToValueAtTime(
-        1.0, audioContext.currentTime + this.fadeTime);
-
 }
 
 AudioLoader.prototype.stop = function() {
@@ -138,7 +140,8 @@ AudioLoader.prototype.stop = function() {
 }
 
 AudioLoader.prototype.resetContinuousPlay = function() {
-    this.startedPlayingAtTime = null;
+
+    this.currentIndex = null;
 }
 
 AudioLoader.prototype.haveAllBuffersPlayed = function () {
