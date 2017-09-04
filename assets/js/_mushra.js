@@ -105,13 +105,17 @@ Mushra.prototype.loadPage = function()
         this.config.siteURL + '/' + this.config.pages[this.currentPage].reference_url);
 
     // Configure the audio loader
-    this.loader = new AudioLoader(this.urls, null);
-    this.loader.continuousPlayback = this.config.continuous_playback;
-    this.loader.loopPlayback = this.config.loop_playback;
+    this.loader = new AudioLoader(this.urls,
+                                  this.config.continuous_playback,
+                                  this.config.loop_playback);
+
     this.loader.load();
 
     // Stop audio
-    $activePage ('.mushra-stop').on("click", this.loader.stop.bind(this.loader));
+    $activePage ('.mushra-stop').on("click", function() {
+        this.loader.stop();
+        this.loader.resetContinuousPlay();
+    }.bind(this));
 
     // Reference
     $activePage ('.mushra-reference').on("click", function(i){
