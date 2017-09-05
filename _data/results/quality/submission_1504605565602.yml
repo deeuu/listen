@@ -1,0 +1,28 @@
+_id: e5e246f0-9220-11e7-83e6-5f4ca8e9a40d
+name: My name
+experiment_id: quality
+data:
+  - '[[0,0,0,0,0,0,0,0]],[0,0,0,0,0,0,0,0]]'
+  - '[[0,0,0,0,0,0,0,0]],[0,0,0,0,0,0,0,0]]'
+  - '[[0,0,0,0,0,0,0,0]],[0,0,0,0,0,0,0,0]]'
+  - '[[0,0,0,0,0,0,0,0]],[0,0,0,0,0,0,0,0]]'
+  - '[[0,36,0,0,0,0,0,0]],[0,0,0,0,0,0,0,0]]'
+sounds:
+  - >-
+    [[Quality,STO1,KAM1,Interferer,OZE,ref,RAF1,GRA3]],[HUA,Quality,Interferer,UHL1,OZE,ref,NUG1,GRA3]]
+  - >-
+    [[Quality,STO1,KAM1,Interferer,OZE,ref,RAF1,GRA3]],[HUA,Quality,Interferer,UHL1,OZE,ref,NUG1,GRA3]]
+  - >-
+    [[Quality,STO1,KAM1,Interferer,OZE,ref,RAF1,GRA3]],[HUA,Quality,Interferer,UHL1,OZE,ref,NUG1,GRA3]]
+  - >-
+    [[Quality,STO1,KAM1,Interferer,OZE,ref,RAF1,GRA3]],[HUA,Quality,Interferer,UHL1,OZE,ref,NUG1,GRA3]]
+  - >-
+    [[Quality,STO1,KAM1,Interferer,OZE,ref,RAF1,GRA3]],[HUA,Quality,Interferer,UHL1,OZE,ref,NUG1,GRA3]]
+pages:
+  - '[vocals-47-SAR,vocals-18-SIR]'
+  - '[vocals-47-SAR,vocals-18-SIR]'
+  - '[vocals-47-SAR,vocals-18-SIR]'
+  - '[vocals-47-SAR,vocals-18-SIR]'
+  - '[vocals-47-SAR,vocals-18-SIR]'
+date: 1504605565
+timestamp: 1504605565
