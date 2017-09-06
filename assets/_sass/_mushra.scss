@@ -32,17 +32,6 @@
     width: 100%;
 };
 
-.mushra-slider-container .ui-slider-input {
-    width: 40px;
-    font-size: 0.8em;
-    border-width: 0;
-    text-align: left;
-
-    @media only screen and (max-width: $breakpoint) {
-        display: none;
-    }
-}
-
 .mushra-slider-container .ui-slider-track {
 
     width: 80%;
@@ -57,4 +46,5 @@
 .mushra-slider-container .slider-handle-active {
 
     background-color: $dark !important;
+    color: $white !important;
 }

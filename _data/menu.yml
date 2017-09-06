@@ -2,7 +2,5 @@
   url: /
 - title: Interfaces
   sublinks:
-    - title: MUSHRA
-      url: /mushra/
-    - title: Similarity
-      url: /similarity/
+    - title: Quality
+      url: /quality/
