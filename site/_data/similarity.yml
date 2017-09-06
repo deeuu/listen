@@ -3,8 +3,10 @@ loop_playback: true
 randomise_slider_handle: true
 randomise_sounds_within_page: true
 randomise_pages: true
-include_number_box: true
+show_number_on_slider: true
 must_play_all_samples_to_continue: false
+back_button_can_exit_test: false
+
 labels:
     - 'Dissimilar'
     - 'Similar'

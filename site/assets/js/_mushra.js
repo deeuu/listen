@@ -151,7 +151,7 @@ Mushra.prototype.createSliders = function()
         var inputHTML = "<input type='range' name='slider' " +
         "value='" + startVal + "' min='0' max='100' class='ui-hidden-accessible'";
 
-        if (this.config.include_number_box)
+        if (this.config.show_number_on_slider)
             inputHTML += "data-show-value='true'/>";
         else
             inputHTML += "/>";
