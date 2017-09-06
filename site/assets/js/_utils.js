@@ -54,6 +54,15 @@ function selectMaximum (a, b)
         return b;
 }
 
+function selectMinimum (a, b)
+{
+    if (a < b)
+        return a;
+    else
+        return b;
+}
+
+
 /** JQM **/
 /* Wrapper for selecting elements on active page:
 https://forum.jquery.com/topic/usage-of-ids-impossible

@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: test
 title: Welcome
-next_url: /mushra/
+next_url: /quality/
 ---
 # Welcome to Listen
 

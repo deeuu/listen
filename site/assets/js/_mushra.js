@@ -1,6 +1,9 @@
 function Mushra(config) {
 
+    console.log('MUSHRA');
+
     this.config = config;
+
     this.pageCounter = 0;
     this.numberOfSounds = 0;
     this.numberOfPages = this.config.pages.length;
@@ -23,42 +26,14 @@ function Mushra(config) {
     }
 
     this.configureNextAndBackButton();
-    this.loadPage();
-}
 
-Mushra.prototype.onNextOrBackButtonClick = function(direction)
-{
-    // If we are on the submission page, only allow previous test
-    if (this.pageCounter == this.numberOfPages)
-    {
-        if(direction < 0)
-        {
-            this.pageCounter += direction;
-            this.loadPage();
-        }
-    }
-    // If final test page, allow complete
-    else if (this.pageCounter == (this.numberOfPages - 1) && direction > 0)
-    {
-        this.fillConfig();
-        this.pageCounter += direction;
-        this.complete();
-    }
-    // Otherwise allow back or forward
-    else
-    {
-        this.fillConfig();
-        this.pageCounter += direction;
-        if (this.pageCounter < 0)
-            this.pageCounter = 0;
-        else
-            this.loadPage();
-    }
+    this.updateTitle();
+    this.loadPage();
 }
 
 Mushra.prototype.configureNextAndBackButton = function()
 {
-    $activePage ('.next-test').on("click", function(){
+    $activePage ('.next').off().on("click", function (e){
 
         if (this.loader.haveAllBuffersPlayed() ||
             !this.config.must_play_all_samples_to_continue)
@@ -75,18 +50,49 @@ Mushra.prototype.configureNextAndBackButton = function()
 
     }.bind(this));
 
-    $activePage ('.previous-test').on("click", function(){
+    $activePage ('.back').off().on("click", function (e){
+
         this.onNextOrBackButtonClick(-1);
+
     }.bind(this));
+}
+
+Mushra.prototype.onNextOrBackButtonClick = function (direction)
+{
+    // Stop any audio
+    if (this.loader)
+        this.loader.stop();
+
+    this.fillConfig();
+
+    this.pageCounter = selectMinimum (this.pageCounter + direction,
+                                      this.numberOfPages);
+
+    this.pageCounter = selectMaximum (this.pageCounter, 0);
+
+    // Complete or not
+    if (this.pageCounter == this.numberOfPages)
+    {
+        if (this.config.allow_submission)
+            this.complete();
+        else
+            $.mobile.changePage (this.config.nextURL);
+    }
+    else
+    {
+        this.updateTitle();
+        this.loadPage();
+    }
+}
+
+Mushra.prototype.updateTitle = function()
+{
+    $activePage ('.title').html ((this.pageCounter + 1) + ' / ' +
+                                 this.numberOfPages);
 }
 
 Mushra.prototype.loadPage = function()
 {
-    this.updatePageCounter();
-
-    // Remove sliders and stop current audio (if any)
-    if (this.loader)
-        this.loader.stop();
 
     this.currentPage = this.pageOrder[this.pageCounter];
     this.currentPageSoundOrder = this.soundOrder[this.pageCounter];
@@ -112,13 +118,13 @@ Mushra.prototype.loadPage = function()
     this.loader.load();
 
     // Stop audio
-    $activePage ('.mushra-stop').on("click", function() {
+    $activePage ('.mushra-stop').off().on("click", function() {
         this.loader.stop();
         this.loader.resetContinuousPlay();
     }.bind(this));
 
     // Reference
-    $activePage ('.mushra-reference').on("click", function(i){
+    $activePage ('.mushra-reference').off().on("click", function(i){
         this.loader.play(i);
     }.bind(this, numberOfSounds));
 
@@ -143,16 +149,17 @@ Mushra.prototype.createSliders = function()
 
         // The slider, triggers audio when user makes adjustment.
         var inputHTML = "<input type='range' name='slider' " +
-        "value='" + startVal + "' min='0' max='100'";
+        "value='" + startVal + "' min='0' max='100' class='ui-hidden-accessible'";
 
         if (this.config.include_number_box)
-            inputHTML += "/>";
+            inputHTML += "data-show-value='true'/>";
         else
-            inputHTML += "class='ui-hidden-accessible'/>";
+            inputHTML += "/>";
 
         $activePage ('.mushra-slider-container').append(inputHTML);
     }
 
+    $activePage ('.mushra-slider-container').trigger('create');
     $activePage ('.mushra-slider-container').enhanceWithin();
 
     // Play audio when slider is moved
@@ -170,7 +177,6 @@ Mushra.prototype.createSliders = function()
             $(this).find('a').addClass('slider-handle-active');
             // Give focus to the handle even if handle is clicked
             $(this).find('a').focus();
-
 
         }.bind(this, i));
     });
@@ -254,9 +260,4 @@ Mushra.prototype.complete = function()
         }).appendTo ('div.submit-popup > form');
 
     $activePage ('.submit-popup').popup('open');
-}
-
-Mushra.prototype.updatePageCounter = function()
-{
-   $activePage ('.title').html((this.pageCounter + 1) + ' / ' + this.numberOfPages);
 }

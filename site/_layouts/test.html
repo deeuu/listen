@@ -1,21 +1,40 @@
-{% assign config = site.data[page.config_file] %}
+<!DOCTYPE html>
+<html>
 
-<div data-role='page'>
+{% include head.html %}
+
+<body>
+
+<div data-role='page' id='id-{{ page.url  | slugify}}'>
+
+{% include menu.html %}
+
+{% assign config = site.data[page.config_file] %}
 
 <div data-role="header">
 
+{% if config.permit_previous_button_test_exit %}
+<a 
+    data-rel='back'
+    class='ui-btn-left ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-left ui-icon-carat-l back'>
+    Previous
+</a>
+{% else %}
 <a 
     class='ui-btn-left ui-btn ui-btn-inline ui-mini
-           ui-corner-all ui-btn-icon-left ui-icon-carat-l previous-test'>
-    Previous test
+           ui-corner-all ui-btn-icon-left ui-icon-carat-l next'>
+    Previous
 </a>
+{% endif %}
+
 
 <h1 class='title'></h1>
 
 <a 
     class='ui-btn-right ui-btn ui-btn-inline ui-mini
-           ui-corner-all ui-btn-icon-right ui-icon-carat-r next-test'>
-    Next test
+           ui-corner-all ui-btn-icon-right ui-icon-carat-r next'>
+    Next
 </a>
 </div>
 
@@ -37,7 +56,7 @@
 <h2>Thank you, please submit your data:</h2>
 
 <input name="options[slug]" type="hidden" value='{{ page.url  | slugify}}'>
-<input name="options[redirect]" type="hidden" value='{{ site.url }}'>
+<input name="options[redirect]" type="hidden" value='{{ site.url }}{{ page.next_url }}'>
 
 <input name='fields[name]'
        value='My name'
@@ -61,19 +80,27 @@
 
 <!-- JS for interface instantiation -->
 <script type="text/javascript">
-$(document).on('pageshow', function() {
+
+$('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
 
     var config = JSON.parse('{{ config | jsonify}}');
-    config.siteURL = "{{ site.url }}";
 
-    var layout = '{{ page.layout }}';
-
-    if (layout == 'mushra' || layout == 'similarity')
+    if (config != null)
     {
-        var testInterface = new Mushra (config);
-    }
+        config.siteURL = "{{ site.url }}";
+        config.nextURL = '{{ site.url }}{{ page.next_url }}';
 
+        var layout = '{{ page.layout }}';
+
+        if (layout == 'mushra' || layout == 'similarity')
+        {
+            var testInterface = new Mushra (config);
+        }
+    }
 });
+
 </script>
 
 </div>
+</body>
+</html>
