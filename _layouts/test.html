@@ -13,7 +13,7 @@
 
 <div data-role="header">
 
-{% if config.permit_previous_button_test_exit %}
+{% if config.back_button_can_exit_test %}
 <a 
     data-rel='back'
     class='ui-btn-left ui-btn ui-btn-inline ui-mini
@@ -23,7 +23,7 @@
 {% else %}
 <a 
     class='ui-btn-left ui-btn ui-btn-inline ui-mini
-           ui-corner-all ui-btn-icon-left ui-icon-carat-l next'>
+           ui-corner-all ui-btn-icon-left ui-icon-carat-l back'>
     Previous
 </a>
 {% endif %}
