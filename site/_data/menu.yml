@@ -1,8 +1,12 @@
 - title: Welcome
   url: /
-- title: Interfaces
+- title: Interface layouts
   sublinks:
     - title: MUSHRA
       url: /mushra/
     - title: Similarity
       url: /similarity/
+- title: Tools
+  sublinks:
+    - title: Soundboard
+      url: /soundboard/

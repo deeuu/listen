@@ -30,6 +30,8 @@ function AudioLoader(urlList, continuousPlayback=true, loopPlayback=true) {
 
 AudioLoader.prototype.loadBuffer = function (url, index) {
 
+    console.log('Loading ', url, ' (index: ', index, ')');
+
     // Load buffer asynchronously
     var request = new XMLHttpRequest();
     request.responseType = "arraybuffer";
@@ -75,6 +77,8 @@ AudioLoader.prototype.play = function (index=0, loop=false) {
     if (index != this.currentIndex)
     {
         this.stop();
+
+        console.log('Playing index: ', index);
 
         // get an AudioBufferSourceNode for playing our buffer
         this.source = audioContext.createBufferSource();
@@ -127,6 +131,8 @@ AudioLoader.prototype.stop = function() {
 
     if (this.source)
     {
+        console.log('Stopping index: ', this.currentIndex);
+
         var whenToStop = audioContext.currentTime + this.fadeTime;
 
         var currentGainNode = this.gainNodes[this.gainNodeIndex];
@@ -136,6 +142,7 @@ AudioLoader.prototype.stop = function() {
         this.source.stop(whenToStop);
 
         this.gainNodeIndex = (this.gainNodeIndex + 1) % 2;
+        this.source = null;
     }
 }
 
