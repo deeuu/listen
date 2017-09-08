@@ -43,15 +43,23 @@
     <p>Please listen to all samples before moving on</p>
 </div>
 
+<div data-role="popup" class="submission-wait-popup" data-position-to="window" data-transition="turn">
+    <p>Please wait for this page to redirect...</p>
+</div>
+
 <!-- Popup window for submissions -->
 <div data-role='popup'
      data-position-to='window'
      class='ui-corner-all ui-popup ui-body-a ui-overlay-shadow submit-popup'
-     data-theme='b'>
+     data-theme='b'
+     data-dismissible="false"
+     >
 
 <form method="post"
       action="https://api.staticman.net/v2/entry/{{ site.github.username }}/{{
-      site.github.repository }}/{{ site.github.branch }}">
+      site.github.repository }}/{{ site.github.branch }}"
+      class='submit-form'
+      >
 
 <h2>Thank you, please submit your data:</h2>
 
@@ -69,7 +77,8 @@
 >
 
 <input type='submit'
-       value='Submit'>
+       value='Submit'
+       >
 </form>
 </div>
 
@@ -80,6 +89,7 @@
 
 <!-- JS for interface instantiation -->
 <script type="text/javascript">
+
 
 $('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
 
@@ -97,6 +107,12 @@ $('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
             var testInterface = new Mushra (config);
         }
     }
+
+    // Show loading spinner when user clicks submit
+    $('.submit-form').on ('submit', function(e){
+        $.mobile.loading('show');
+    });
+
 });
 
 </script>

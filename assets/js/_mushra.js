@@ -29,6 +29,7 @@ function Mushra(config) {
 
     this.updateTitle();
     this.loadPage();
+
 }
 
 Mushra.prototype.configureNextAndBackButton = function()
@@ -52,7 +53,7 @@ Mushra.prototype.configureNextAndBackButton = function()
 
     $activePage ('.back').off().on("click", function (e){
 
-        this.onNextOrBackButtonClick(-1);
+        this.onNextOrBackButtonClick (-1);
 
     }.bind(this));
 }
