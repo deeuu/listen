@@ -1,0 +1,10 @@
+_id: be9528d0-948f-11e7-98b3-2b3edf49c9f4
+name: XXX
+experiment_id: quality
+data: >-
+  [[86,64,62,100,100,11,77,62]],[56,69,100,100,53,23,73,55]],[37,94,7,64,100,32,100,61]],[88,50,63,31,100,100,31,96]],[83,100,100,73,57,36,16,71]],[8,100,100,49,18,35,16,13]],[5,100,6,100,1,20,47,41]],[25,100,79,74,8,44,14,72]],[64,58,100,10,35,1,1,85]],[96,10,99,47,45,64,74,88]],[80,95,99,41,81,47,28,81]],[50,32,100,100,46,41,22,71]],[3,100,100,71,41,75,26,57]],[100,100,38,44,26,46,66,76]],[65,100,100,18,26,20,5,10]],[19,100,100,20,62,41,26,23]]
+sounds: >-
+  [[CHA,KAM2,KON,Interferer,ref,Quality,DUR,HUA]],[UHL3,GRA3,Interferer,ref,Quality,KAM1,RAF1,DUR]],[UHL3,CHA,KAM2,KON,Interferer,NUG3,ref,Quality]],[GRA3,GRA2,KAM2,KON,Interferer,ref,Quality,DUR]],[GRA3,Interferer,ref,UHL1,Quality,NUG1,OZE,HUA]],[KON,Interferer,ref,RAF2,NUG2,Quality,KAM1,HUA]],[KON,Interferer,JEO1,ref,Quality,KAM1,RAF1,HUA]],[CHA,Interferer,NUG3,ref,Quality,JEO2,RAF1,HUA]],[GRA2,KON,Interferer,ref,Quality,RAF1,HUA,RAF3]],[GRA3,KAM2,KON,Interferer,ref,Quality,KAM1,HUA]],[GRA3,Interferer,ref,STO1,Quality,KAM1,RAF1,OZE]],[GRA3,STO2,Interferer,ref,RAF2,Quality,KAM1,HUA]],[KAM2,Interferer,ref,RAF2,STO1,UHL1,Quality,HUA]],[Interferer,ref,UHL1,Quality,DUR,NUG1,HUA,RAF3]],[STO2,Interferer,ref,NUG2,Quality,JEO2,KAM1,HUA]],[KON,Interferer,ref,UHL1,Quality,DUR,HUA,RAF3]]
+pages: >-
+  [vocals-20-SAR,vocals-11-SAR,vocals-42-SAR,vocals-12-SAR,vocals-18-SIR,vocals-10-SIR,vocals-26-SIR,vocals-30-SIR,vocals-25-SAR,vocals-19-SIR,vocals-47-SAR,vocals-24-SAR,vocals-45-SIR,vocals-41-SIR,vocals-49-SIR,vocals-48-SAR]
+date: 1504873076
