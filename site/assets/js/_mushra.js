@@ -64,25 +64,35 @@ Mushra.prototype.onNextOrBackButtonClick = function (direction)
     if (this.loader)
         this.loader.stop();
 
-    this.fillConfig();
-
-    this.pageCounter = selectMinimum (this.pageCounter + direction,
-                                      this.numberOfPages);
-
-    this.pageCounter = selectMaximum (this.pageCounter, 0);
-
-    // Complete or not
-    if (this.pageCounter == this.numberOfPages)
+    if (this.pageCounter == 0 && direction < 0)
     {
-        if (this.config.allow_submission)
-            this.complete();
-        else
-            $.mobile.changePage (this.config.nextURL);
+        if (this.config.back_button_can_exit_test)
+            window.history.back();
     }
     else
     {
-        this.updateTitle();
-        this.loadPage();
+        $activePage ('.back').show();
+
+        this.fillConfig();
+
+        this.pageCounter = selectMinimum (this.pageCounter + direction,
+                                          this.numberOfPages);
+
+        this.pageCounter = selectMaximum (this.pageCounter, 0);
+
+        // Complete or not
+        if (this.pageCounter == this.numberOfPages)
+        {
+            if (this.config.allow_submission)
+                this.complete();
+            else
+                $.mobile.changePage (this.config.nextURL);
+        }
+        else
+        {
+            this.updateTitle();
+            this.loadPage();
+        }
     }
 }
 
