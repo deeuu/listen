@@ -13,21 +13,11 @@
 
 <div data-role="header">
 
-{% if config.back_button_can_exit_test %}
-<a 
-    data-rel='back'
-    class='ui-btn-left ui-btn ui-btn-inline ui-mini
-           ui-corner-all ui-btn-icon-left ui-icon-carat-l back'>
-    Previous
-</a>
-{% else %}
 <a 
     class='ui-btn-left ui-btn ui-btn-inline ui-mini
            ui-corner-all ui-btn-icon-left ui-icon-carat-l back'>
     Previous
 </a>
-{% endif %}
-
 
 <h1 class='title'></h1>
 
@@ -79,6 +69,11 @@
 <input type='submit'
        value='Submit'
        >
+
+<input type='button'
+       value='Cancel'
+       class='cancel'
+       >
 </form>
 </div>
 
@@ -90,6 +85,17 @@
 <!-- JS for interface instantiation -->
 <script type="text/javascript">
 
+$('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
+
+    // Show loading spinner when user clicks submit
+    $activePage ('.submit-form').on ('submit', function(e){
+        $.mobile.loading('show');
+    });
+
+    $activePage ('.submit-form .cancel').on ('click', function(e) {
+        $activePage ('.submit-popup').popup("close");
+    });
+});
 
 $('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
 
@@ -108,12 +114,8 @@ $('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
         }
     }
 
-    // Show loading spinner when user clicks submit
-    $('.submit-form').on ('submit', function(e){
-        $.mobile.loading('show');
-    });
+   });
 
-});
 
 </script>
 

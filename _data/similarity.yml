@@ -16,17 +16,17 @@ pages:
       reference_url: sounds/dog1.wav
       sounds:
           - name: 'Ref'
-            url: sounds/dog1.wav
+            url: sounds/dog2.wav
           - name: 1
             url: sounds/dog2.wav
           - name: 2
-            url: sounds/dog3.wav
+            url: sounds/dog2.wav
     - name: 'Set 2'
       reference_url: sounds/dog4.wav
       sounds:
           - name: 'Ref'
-            url: sounds/dog4.wav
+            url: sounds/dog3.wav
           - name: 1
-            url: sounds/dog5.wav
+            url: sounds/dog3.wav
           - name: 2
-            url: sounds/dog6.wav
+            url: sounds/dog3.wav
