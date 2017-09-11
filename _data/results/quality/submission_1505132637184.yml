@@ -1,0 +1,25 @@
+_id: 150d4950-96ec-11e7-95a2-43a227ec48a6
+name: Hagen
+experiment_id: quality
+data:
+  - >-
+    [[38,45,62,82,67,54,84,32]],[90,16,97,17,65,53,73,47]],[24,10,4,66,63,65,22,34]],[50,67,57,38,51,14,38,73]],[7,99,41,29,27,92,48,42]],[49,15,46,72,50,23,61,98]],[7,62,38,18,68,94,58,99]],[82,5,30,62,16,30,80,1]],[35,2,41,81,93,44,40,38]],[77,1,64,67,57,27,95,31]],[46,32,61,84,58,64,53,36]],[49,19,16,14,29,22,12,40]],[3,90,12,37,74,100,6,33]],[33,26,40,68,8,38,9,29]],[26,44,86,28,88,33,92,8]],[85,35,13,81,79,51,67,68]]
+  - >-
+    [[38,45,62,82,67,54,84,32]],[90,16,97,17,65,53,73,47]],[24,10,4,66,63,65,22,34]],[50,67,57,38,51,14,38,73]],[7,99,41,29,27,92,48,42]],[49,15,46,72,50,23,61,98]],[7,62,38,18,68,94,58,99]],[82,5,30,62,16,30,80,1]],[35,2,41,81,93,44,40,38]],[77,1,64,67,57,27,95,31]],[46,32,61,84,58,64,53,36]],[49,19,16,14,29,22,12,40]],[3,90,12,37,74,100,6,33]],[33,26,40,68,8,38,9,29]],[26,44,86,28,88,33,92,8]],[85,35,13,81,79,51,67,68]]
+  - >-
+    [[38,45,62,82,67,54,84,32]],[90,16,97,17,65,53,73,47]],[24,10,4,66,63,65,22,34]],[50,67,57,38,51,14,38,73]],[7,99,41,29,27,92,48,42]],[49,15,46,72,50,23,61,98]],[7,62,38,18,68,94,58,99]],[82,5,30,62,16,30,80,1]],[35,2,41,81,93,44,40,38]],[77,1,64,67,57,27,95,31]],[46,32,61,84,58,64,53,36]],[49,19,16,14,29,22,12,40]],[3,90,12,37,74,100,6,33]],[33,26,40,68,8,38,9,29]],[26,44,86,28,88,33,92,8]],[85,35,13,81,79,51,67,68]]
+sounds:
+  - >-
+    [[CHA,KAM2,KON,Interferer,ref,Quality,DUR,HUA]],[UHL3,GRA3,Interferer,ref,Quality,KAM1,RAF1,DUR]],[UHL3,CHA,KAM2,KON,Interferer,NUG3,ref,Quality]],[GRA3,GRA2,KAM2,KON,Interferer,ref,Quality,DUR]],[GRA3,Interferer,ref,UHL1,Quality,NUG1,OZE,HUA]],[KON,Interferer,ref,RAF2,NUG2,Quality,KAM1,HUA]],[KON,Interferer,JEO1,ref,Quality,KAM1,RAF1,HUA]],[CHA,Interferer,NUG3,ref,Quality,JEO2,RAF1,HUA]],[GRA2,KON,Interferer,ref,Quality,RAF1,HUA,RAF3]],[GRA3,KAM2,KON,Interferer,ref,Quality,KAM1,HUA]],[GRA3,Interferer,ref,STO1,Quality,KAM1,RAF1,OZE]],[GRA3,STO2,Interferer,ref,RAF2,Quality,KAM1,HUA]],[KAM2,Interferer,ref,RAF2,STO1,UHL1,Quality,HUA]],[Interferer,ref,UHL1,Quality,DUR,NUG1,HUA,RAF3]],[STO2,Interferer,ref,NUG2,Quality,JEO2,KAM1,HUA]],[KON,Interferer,ref,UHL1,Quality,DUR,HUA,RAF3]]
+  - >-
+    [[CHA,KAM2,KON,Interferer,ref,Quality,DUR,HUA]],[UHL3,GRA3,Interferer,ref,Quality,KAM1,RAF1,DUR]],[UHL3,CHA,KAM2,KON,Interferer,NUG3,ref,Quality]],[GRA3,GRA2,KAM2,KON,Interferer,ref,Quality,DUR]],[GRA3,Interferer,ref,UHL1,Quality,NUG1,OZE,HUA]],[KON,Interferer,ref,RAF2,NUG2,Quality,KAM1,HUA]],[KON,Interferer,JEO1,ref,Quality,KAM1,RAF1,HUA]],[CHA,Interferer,NUG3,ref,Quality,JEO2,RAF1,HUA]],[GRA2,KON,Interferer,ref,Quality,RAF1,HUA,RAF3]],[GRA3,KAM2,KON,Interferer,ref,Quality,KAM1,HUA]],[GRA3,Interferer,ref,STO1,Quality,KAM1,RAF1,OZE]],[GRA3,STO2,Interferer,ref,RAF2,Quality,KAM1,HUA]],[KAM2,Interferer,ref,RAF2,STO1,UHL1,Quality,HUA]],[Interferer,ref,UHL1,Quality,DUR,NUG1,HUA,RAF3]],[STO2,Interferer,ref,NUG2,Quality,JEO2,KAM1,HUA]],[KON,Interferer,ref,UHL1,Quality,DUR,HUA,RAF3]]
+  - >-
+    [[CHA,KAM2,KON,Interferer,ref,Quality,DUR,HUA]],[UHL3,GRA3,Interferer,ref,Quality,KAM1,RAF1,DUR]],[UHL3,CHA,KAM2,KON,Interferer,NUG3,ref,Quality]],[GRA3,GRA2,KAM2,KON,Interferer,ref,Quality,DUR]],[GRA3,Interferer,ref,UHL1,Quality,NUG1,OZE,HUA]],[KON,Interferer,ref,RAF2,NUG2,Quality,KAM1,HUA]],[KON,Interferer,JEO1,ref,Quality,KAM1,RAF1,HUA]],[CHA,Interferer,NUG3,ref,Quality,JEO2,RAF1,HUA]],[GRA2,KON,Interferer,ref,Quality,RAF1,HUA,RAF3]],[GRA3,KAM2,KON,Interferer,ref,Quality,KAM1,HUA]],[GRA3,Interferer,ref,STO1,Quality,KAM1,RAF1,OZE]],[GRA3,STO2,Interferer,ref,RAF2,Quality,KAM1,HUA]],[KAM2,Interferer,ref,RAF2,STO1,UHL1,Quality,HUA]],[Interferer,ref,UHL1,Quality,DUR,NUG1,HUA,RAF3]],[STO2,Interferer,ref,NUG2,Quality,JEO2,KAM1,HUA]],[KON,Interferer,ref,UHL1,Quality,DUR,HUA,RAF3]]
+pages:
+  - >-
+    [vocals-20-SAR,vocals-11-SAR,vocals-42-SAR,vocals-12-SAR,vocals-18-SIR,vocals-10-SIR,vocals-26-SIR,vocals-30-SIR,vocals-25-SAR,vocals-19-SIR,vocals-47-SAR,vocals-24-SAR,vocals-45-SIR,vocals-41-SIR,vocals-49-SIR,vocals-48-SAR]
+  - >-
+    [vocals-20-SAR,vocals-11-SAR,vocals-42-SAR,vocals-12-SAR,vocals-18-SIR,vocals-10-SIR,vocals-26-SIR,vocals-30-SIR,vocals-25-SAR,vocals-19-SIR,vocals-47-SAR,vocals-24-SAR,vocals-45-SIR,vocals-41-SIR,vocals-49-SIR,vocals-48-SAR]
+  - >-
+    [vocals-20-SAR,vocals-11-SAR,vocals-42-SAR,vocals-12-SAR,vocals-18-SIR,vocals-10-SIR,vocals-26-SIR,vocals-30-SIR,vocals-25-SAR,vocals-19-SIR,vocals-47-SAR,vocals-24-SAR,vocals-45-SIR,vocals-41-SIR,vocals-49-SIR,vocals-48-SAR]
+date: '2017-09-11T12:23:57.178Z'
