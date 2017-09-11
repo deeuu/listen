@@ -7,6 +7,14 @@ function Mushra(config) {
     this.pageCounter = 0;
     this.numberOfSounds = 0;
     this.numberOfPages = this.config.pages.length;
+
+    if (this.config.add_consistency_check)
+    {
+        idx = randomNumber (0, this.numberOfPages, true);
+        this.numberOfPages += 1;
+        this.config.pages.push (this.config.pages[idx]);
+    }
+
     this.have_seen_this_page_before = arrayFilledWith(false, this.numberOfPages);
 
     // Order of pages
