@@ -29,7 +29,6 @@ function Mushra(config) {
 
     this.updateTitle();
     this.loadPage();
-
 }
 
 Mushra.prototype.configureNextAndBackButton = function()
@@ -250,6 +249,10 @@ Mushra.prototype.complete = function()
             sounds += '],';
         }
     }
+
+    console.log('values: ', values);
+    console.log('sounds: ', sounds);
+    console.log('pages: ', pages);
 
     // Append inputs to the form
     $('<input>').attr({
