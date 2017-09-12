@@ -119,11 +119,11 @@ Mushra.prototype.loadPage = function()
 
     this.currentPage = this.pageOrder[this.pageCounter];
     this.currentPageSoundOrder = this.soundOrder[this.pageCounter];
-    var numberOfSounds = this.currentPageSoundOrder.length;
+    this.numberOfSounds = this.currentPageSoundOrder.length;
 
-    this.urls = new Array(numberOfSounds);
+    this.urls = new Array(this.numberOfSounds);
 
-    for (var i = 0; i < numberOfSounds; ++i)
+    for (var i = 0; i < this.numberOfSounds; ++i)
     {
         var thisSound = this.config.pages[this.currentPage].sounds[this.currentPageSoundOrder[i]];
         this.urls[i] = this.config.siteURL + '/' + thisSound.url;
@@ -138,7 +138,15 @@ Mushra.prototype.loadPage = function()
                                   this.config.continuous_playback,
                                   this.config.loop_playback);
 
-    this.loader.load();
+    $activePage ('.mushra-container').hide();
+    $.mobile.loading('show');
+    this.loader.load (this.setupGUI.bind(this));
+}
+
+Mushra.prototype.setupGUI = function()
+{
+    $.mobile.loading('hide');
+    $activePage ('.mushra-container').show();
 
     // Stop audio
     $activePage ('.mushra-stop').off().on("click", function() {
@@ -149,7 +157,7 @@ Mushra.prototype.loadPage = function()
     // Reference
     $activePage ('.mushra-reference').off().on("click", function(i){
         this.loader.play(i);
-    }.bind(this, numberOfSounds));
+    }.bind(this, this.numberOfSounds));
 
     this.createSliders();
 
@@ -161,8 +169,7 @@ Mushra.prototype.createSliders = function()
 {
     $activePage ('.mushra-slider-container').empty();
 
-    var numberOfSounds = this.currentPageSoundOrder.length;
-    for (var i = 0; i < numberOfSounds; ++i)
+    for (var i = 0; i < this.numberOfSounds; ++i)
     {
         var startVal = 0;
         if (this.have_seen_this_page_before[this.pageCounter])

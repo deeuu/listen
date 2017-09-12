@@ -8,7 +8,7 @@ var audioContext = new AudioContext();
 function AudioLoader(urlList, continuousPlayback=true, loopPlayback=true) {
 
     this.urlList = urlList;
-    this.buffers = new Array(urlList.length);
+    this.buffers = arrayFilledWith(null, urlList.length);
 
     this.gainNodes = [audioContext.createGain(), audioContext.createGain()]
     this.gainNodeIndex = 0;
@@ -28,7 +28,7 @@ function AudioLoader(urlList, continuousPlayback=true, loopPlayback=true) {
     this.hasPlayed = []
 }
 
-AudioLoader.prototype.loadBuffer = function (url, index) {
+AudioLoader.prototype.loadBuffer = function (url, index, callBack) {
 
     console.log('Loading ', url, ' (index: ', index, ')');
 
@@ -51,6 +51,7 @@ AudioLoader.prototype.loadBuffer = function (url, index) {
                 }
 
                 loader.buffers[index] = buffer;
+                loader.checkBuffers (callBack);
             },
 
             function(error) {
@@ -65,10 +66,24 @@ AudioLoader.prototype.loadBuffer = function (url, index) {
     this.hasPlayed.push(false);
 }
 
-AudioLoader.prototype.load = function() {
+
+AudioLoader.prototype.checkBuffers = function(callBack) {
+
+    var allOk = true;
+    for (var i = 0; i < this.buffers.length; ++i)
+    {
+        if (this.buffers[i] == null)
+            allOk = false;
+    }
+
+    if (allOk)
+        callBack();
+}
+
+AudioLoader.prototype.load = function(callBack) {
 
     for (var i = 0; i < this.urlList.length; ++i)
-        this.loadBuffer(this.urlList[i], i);
+        this.loadBuffer (this.urlList[i], i, callBack);
 
     this.timerStarted = false;
 }
