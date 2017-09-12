@@ -70,6 +70,7 @@ AudioLoader.prototype.load = function() {
     for (var i = 0; i < this.urlList.length; ++i)
         this.loadBuffer(this.urlList[i], i);
 
+    this.timerStarted = false;
 }
 
 AudioLoader.prototype.play = function (index=0, loop=false) {
@@ -120,11 +121,28 @@ AudioLoader.prototype.play = function (index=0, loop=false) {
         this.currentIndex = index;
         this.startedPlayingAtTime = audioContext.currentTime;
 
+        this.startTimer();
+
         this.source.start(0, this.onsetTime);
         currentGainNode.gain.linearRampToValueAtTime(
             1.0, audioContext.currentTime + this.fadeTime);
 
     }
+}
+
+AudioLoader.prototype.startTimer = function ()
+{
+    if (!this.timerStarted)
+    {
+        this.startTime = audioContext.currentTime;
+        this.timerStarted = true;
+    }
+}
+
+AudioLoader.prototype.endTimer = function ()
+{
+    this.timerStarted = false;
+    return audioContext.currentTime - this.startTime;
 }
 
 AudioLoader.prototype.stop = function() {

@@ -12,7 +12,9 @@ function Mushra(config) {
     {
         idx = randomNumber (0, this.numberOfPages, true);
         this.numberOfPages += 1;
-        this.config.pages.push (this.config.pages[idx]);
+        var newPage = JSON.parse(JSON.stringify(this.config.pages[idx]));
+        newPage.name += '-duplicate';
+        this.config.pages.push (newPage);
     }
 
     this.have_seen_this_page_before = arrayFilledWith(false, this.numberOfPages);
@@ -206,6 +208,11 @@ Mushra.prototype.fillConfig = function()
         this.config.pages[this.currentPage].sounds[this.currentPageSoundOrder[i]].rating = value;
     }.bind(this);
 
+    if ((this.config.pages[this.currentPage].duration == undefined) & (this.loader.timerStarted))
+        this.config.pages[this.currentPage].duration = this.loader.endTimer();
+
+    this.config.pages[this.currentPage].order = this.pageCounter;
+
     $activePage (".ui-slider input").each( function (i) {
         setRating (i, $(this).val());
     });
@@ -215,8 +222,10 @@ Mushra.prototype.complete = function()
 {
     // Build an array of arrays for the ratings
     var values = '[';
+    var times = '[';
     var sounds = '[';
     var pages = '[';
+    var pageOrder = '[';
 
     for (var i = 0; i < this.numberOfPages; ++i)
     {
@@ -242,25 +251,33 @@ Mushra.prototype.complete = function()
             }
         }
 
-
         pages += this.config.pages[i].name;
+        pageOrder += this.config.pages[i].order;
+        times += this.config.pages[i].duration;
+
         if (i == this.numberOfPages - 1)
         {
             pages += ']';
+            pageOrder += ']';
+            times += ']';
             values += ']';
             sounds += ']';
         }
         else
         {
             pages += ',';
+            pageOrder += ',';
+            times += ',';
             values += '],';
             sounds += '],';
         }
     }
 
     console.log('values: ', values);
+    console.log('times: ', times);
     console.log('sounds: ', sounds);
     console.log('pages: ', pages);
+    console.log('page order: ', pageOrder);
 
     // Append inputs to the form
     $('<input>').attr({
@@ -279,6 +296,12 @@ Mushra.prototype.complete = function()
             type: 'hidden',
             name: 'fields[pages]',
             value: pages,
+        }).appendTo ('div.submit-popup > form');
+
+    $('<input>').attr({
+            type: 'hidden',
+            name: 'fields[page_order]',
+            value: pageOrder,
         }).appendTo ('div.submit-popup > form');
 
     $activePage ('.submit-popup').popup('open');

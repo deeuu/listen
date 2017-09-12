@@ -27,7 +27,7 @@ function randomNumber(min, max, shouldRound)
     val += min;
 
     if (shouldRound)
-        val = Math.round(val)
+        val = Math.floor (val)
     return val;
 }
 
