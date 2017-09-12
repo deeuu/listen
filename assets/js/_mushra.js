@@ -93,7 +93,10 @@ Mushra.prototype.onNextOrBackButtonClick = function (direction)
         if (this.pageCounter == this.numberOfPages)
         {
             if (this.config.allow_submission)
+            {
                 this.complete();
+                this.pageCounter -= 1;
+            }
             else
                 $.mobile.changePage (this.config.nextURL);
         }
