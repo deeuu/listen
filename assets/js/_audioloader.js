@@ -26,9 +26,10 @@ function AudioLoader(urlList, continuousPlayback=true, loopPlayback=true) {
     this.continuousPlayback = continuousPlayback;
     this.loopPlayback = loopPlayback;
     this.hasPlayed = []
+    this.allOk = false;
 }
 
-AudioLoader.prototype.loadBuffer = function (url, index, callBack) {
+AudioLoader.prototype.loadBuffer = function (url, index, callBack=null) {
 
     console.log('Loading ', url, ' (index: ', index, ')');
 
@@ -69,19 +70,26 @@ AudioLoader.prototype.loadBuffer = function (url, index, callBack) {
 
 AudioLoader.prototype.checkBuffers = function(callBack) {
 
-    var allOk = true;
+    this.allOk = true;
     for (var i = 0; i < this.buffers.length; ++i)
     {
         if (this.buffers[i] == null)
-            allOk = false;
+            this.allOk = false;
     }
 
-    if (allOk)
-        callBack();
+    if (this.allOk)
+    {
+        $.mobile.loading ('hide');
+        if (typeof callBack == 'function')
+            callBack();
+    }
 }
 
-AudioLoader.prototype.load = function(callBack) {
+AudioLoader.prototype.load = function(callBack=null) {
 
+    $.mobile.loading ('show');
+
+    this.allOk = false;
     for (var i = 0; i < this.urlList.length; ++i)
         this.loadBuffer (this.urlList[i], i, callBack);
 
@@ -90,7 +98,7 @@ AudioLoader.prototype.load = function(callBack) {
 
 AudioLoader.prototype.play = function (index=0, loop=false) {
 
-    if (index != this.currentIndex)
+    if ((index != this.currentIndex) && this.allOk)
     {
         this.stop();
 

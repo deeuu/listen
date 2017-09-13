@@ -139,13 +139,11 @@ Mushra.prototype.loadPage = function()
                                   this.config.loop_playback);
 
     $activePage ('.mushra-container').hide();
-    $.mobile.loading('show');
     this.loader.load (this.setupGUI.bind(this));
 }
 
 Mushra.prototype.setupGUI = function()
 {
-    $.mobile.loading('hide');
     $activePage ('.mushra-container').show();
 
     // Stop audio
