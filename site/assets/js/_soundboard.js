@@ -34,4 +34,7 @@ function Soundboard(config) {
     });
 
     $activePage (".soundboard-stop").off().on ('click', this.loader.stop.bind(this.loader));
+
+    $activePage ('.next').off().on("click", this.loader.stop.bind(this.loader));
+    $activePage ('.prev').off().on("click", this.loader.stop.bind(this.loader));
 }

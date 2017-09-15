@@ -149,7 +149,6 @@ Mushra.prototype.setupGUI = function()
     // Stop audio
     $activePage ('.mushra-stop').off().on("click", function() {
         this.loader.stop();
-        this.loader.resetContinuousPlay();
     }.bind(this));
 
     // Reference
