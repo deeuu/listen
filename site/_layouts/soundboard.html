@@ -1,5 +1,10 @@
-{% assign config = site.data[page.config_file] %}
+---
+layout: test
+---
 
+{{ content }}
+
+{% assign config = site.data[page.config_file] %}
 
 <ul class="soundboard-container">
  
@@ -22,15 +27,3 @@
 {% endfor %}
 
 </ul>
-
-<script type="text/javascript">
-
-$('#id-{{ page.url  | slugify}}').on('pageshow', function() {
-
-    var config = JSON.parse('{{ config | jsonify}}');
-    config.siteURL = "{{ site.url }}";
-
-    var board = new Soundboard(config);
-});
-
-</script>
