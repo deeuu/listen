@@ -9,6 +9,7 @@ function Mushra(config) {
     this.pageCounter = 0;
     this.numberOfSounds = 0;
     this.numberOfPages = this.config.pages.length;
+    this.currentPageSoundOrder = null;
 
     if (this.config.add_consistency_check)
     {
@@ -26,7 +27,10 @@ function Mushra(config) {
     if (this.config.randomise_pages)
         shuffle(this.pageOrder);
 
-    // Order of sounds within page
+    /* Order of sounds within page (basically a list to map from slider index to a buffer,
+     where first element is first slider)
+    */
+
     this.soundOrder = [];
     for (var i = 0; i < this.numberOfPages; ++i)
     {
@@ -75,8 +79,11 @@ Mushra.prototype.configureButtons = function()
 
     // Reference
     $activePage ('.mushra-reference').on("click", function(){
-        console.log(this.loader);
         this.loader.play(this.numberOfSounds);
+    }.bind(this));
+
+    $activePage ('.mushra-sort').on("click", function() {
+        this.sortSliders();
     }.bind(this));
 }
 
@@ -105,13 +112,8 @@ Mushra.prototype.onNextOrBackButtonClick = function (direction)
         // Complete or not
         if (this.pageCounter == this.numberOfPages)
         {
-            if (this.config.allow_submission)
-            {
-                this.complete();
-                this.pageCounter -= 1;
-            }
-            else
-                $.mobile.changePage (this.config.nextURL);
+            this.complete();
+            this.pageCounter -= 1;
         }
         else
         {
@@ -132,13 +134,14 @@ Mushra.prototype.loadPage = function()
 
     this.currentPage = this.pageOrder[this.pageCounter];
     this.currentPageSoundOrder = this.soundOrder[this.pageCounter];
+    console.log('Slider -> buffer indices: ', this.currentPageSoundOrder);
     this.numberOfSounds = this.currentPageSoundOrder.length;
 
     this.urls = new Array(this.numberOfSounds);
 
     for (var i = 0; i < this.numberOfSounds; ++i)
     {
-        var thisSound = this.config.pages[this.currentPage].sounds[this.currentPageSoundOrder[i]];
+        var thisSound = this.config.pages[this.currentPage].sounds[i];
         this.urls[i] = this.config.siteURL + '/' + thisSound.url;
     }
 
@@ -192,10 +195,7 @@ Mushra.prototype.createSliders = function()
     $activePage ('.mushra-slider-container').trigger('create');
     $activePage ('.mushra-slider-container').enhanceWithin();
 
-    // Play audio when slider is moved
-    var playFunc = function (i) {
-            this.loader.play(i)
-    }.bind(this);
+    var mainObj = this;
 
     $activePage (".ui-slider").each(function (i) {
 
@@ -205,7 +205,7 @@ Mushra.prototype.createSliders = function()
         $(this).on('slidestart', function (i) {
 
             // play this audio file
-            playFunc (i);
+            mainObj.playBuf (i);
             // change handle colour when slider is moved
             $(this).find('a').addClass('slider-handle-active');
             // Give focus to the handle even if handle is clicked
@@ -215,6 +215,45 @@ Mushra.prototype.createSliders = function()
 
         }.bind(this, i));
     });
+
+}
+
+Mushra.prototype.playBuf = function (i)
+{
+    this.loader.play (this.currentPageSoundOrder[i]);
+}
+
+Mushra.prototype.sortSliders = function()
+{
+    this.loader.stop();
+
+    var values = [];
+    $activePage (".ui-slider input").each (function (i) {
+        values.push (parseInt ($(this).val()));
+    });
+
+    var indices = indicesNeededToSortArray (values);
+
+    var mainObj = this;
+    var tempOrder = this.currentPageSoundOrder.slice();
+
+    $activePage (".ui-slider").each (function (i) {
+
+        mainObj.currentPageSoundOrder[i] = tempOrder[indices[i]];
+
+        var idx = mainObj.currentPageSoundOrder[i];
+
+        if (mainObj.loader.hasPlayed[idx])
+            $(this).find('a').addClass('slider-handle-active');
+        else
+            $(this).find('a').removeClass('slider-handle-active');
+
+        $(this).find('input').val(values[indices[i]]).slider('refresh');
+
+        $(this).find('a').removeAttr('title');
+    });
+
+    console.log('Slider -> buffer indices: ', this.currentPageSoundOrder);
 }
 
 Mushra.prototype.fillConfig = function()
@@ -294,30 +333,36 @@ Mushra.prototype.complete = function()
     console.log('pages: ', pages);
     console.log('page order: ', pageOrder);
 
-    // Append inputs to the form
-    $('<input>').attr({
-            type: 'hidden',
-            name: 'fields[data]',
-            value: values,
-        }).appendTo ('div.submit-popup > form');
+    if (this.config.allow_submission)
+    {
+        // Append inputs to the form
+        $('<input>').attr({
+                type: 'hidden',
+                name: 'fields[data]',
+                value: values,
+            }).appendTo ('div.submit-popup > form');
 
-    $('<input>').attr({
-            type: 'hidden',
-            name: 'fields[sounds]',
-            value: sounds,
-        }).appendTo ('div.submit-popup > form');
+        $('<input>').attr({
+                type: 'hidden',
+                name: 'fields[sounds]',
+                value: sounds,
+            }).appendTo ('div.submit-popup > form');
 
-    $('<input>').attr({
-            type: 'hidden',
-            name: 'fields[pages]',
-            value: pages,
-        }).appendTo ('div.submit-popup > form');
+        $('<input>').attr({
+                type: 'hidden',
+                name: 'fields[pages]',
+                value: pages,
+            }).appendTo ('div.submit-popup > form');
 
-    $('<input>').attr({
-            type: 'hidden',
-            name: 'fields[page_order]',
-            value: pageOrder,
-        }).appendTo ('div.submit-popup > form');
+        $('<input>').attr({
+                type: 'hidden',
+                name: 'fields[page_order]',
+                value: pageOrder,
+            }).appendTo ('div.submit-popup > form');
 
-    $activePage ('.submit-popup').popup('open');
+        $activePage ('.submit-popup').popup('open');
+    }
+    else{
+        $.mobile.changePage (this.config.nextURL);
+    }
 }
