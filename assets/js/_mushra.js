@@ -179,7 +179,7 @@ Mushra.prototype.createSliders = function()
 
         // The slider, triggers audio when user makes adjustment.
         var inputHTML = "<input type='range' name='slider' " +
-        "value='" + startVal + "' min='0' max='100' class='ui-hidden-accessible'";
+        "value='" + startVal + "' min='0' max='100' class='ui-hidden-accessible' ";
 
         if (this.config.show_number_on_slider)
             inputHTML += "data-show-value='true'/>";
@@ -199,6 +199,9 @@ Mushra.prototype.createSliders = function()
 
     $activePage (".ui-slider").each(function (i) {
 
+        // Remove the popup displaying the value of the slider
+        $(this).find('a').removeAttr('title');
+
         $(this).on('slidestart', function (i) {
 
             // play this audio file
@@ -207,6 +210,8 @@ Mushra.prototype.createSliders = function()
             $(this).find('a').addClass('slider-handle-active');
             // Give focus to the handle even if handle is clicked
             $(this).find('a').focus();
+
+            $(this).find('a').removeAttr('title');
 
         }.bind(this, i));
     });
