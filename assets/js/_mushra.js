@@ -49,6 +49,9 @@ function Mushra(config) {
 
 Mushra.prototype.configureButtons = function()
 {
+
+    $activePage('.next').removeAttr('href');
+
     $activePage ('.next').on("click", function (e){
 
         if (this.loader.haveAllBuffersPlayed() ||
