@@ -1,0 +1,9 @@
+_id: adb75660-9d44-11e7-9300-0381fd250842
+name: My name
+experiment_id: similarity
+data: '[[66,96,15]],[46,44,19]],[2,43,37]]'
+sounds: '[[Ref,2,3]],[Ref,5,6]],[Ref,2,3]]'
+pages: '[Set 1,Set 2,Set 1-duplicate]'
+page_order: '[1,2,0]'
+page_response_time: '[undefined,undefined,undefined]'
+date: '2017-09-19T14:13:16.065Z'
