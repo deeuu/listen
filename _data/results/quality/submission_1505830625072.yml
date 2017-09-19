@@ -1,0 +1,10 @@
+_id: 363e3440-9d45-11e7-9300-0381fd250842
+name: My name
+experiment_id: quality
+data: '[[28,47,58,68,76,88,94,79]],[34,49,34,27,40,47,53,57]]'
+sounds: >-
+  [[Quality,STO1,KAM1,Interferer,OZE,ref,RAF1,GRA3]],[Quality,STO1,KAM1,Interferer,OZE,ref,RAF1,GRA3]]
+pages: '[vocals-47-SAR,vocals-47-SAR-duplicate]'
+page_order: '[0,1]'
+page_response_time: '[7.767074829931973,5.317369614512472]'
+date: '2017-09-19T14:17:05.071Z'
