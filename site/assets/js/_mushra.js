@@ -342,6 +342,7 @@ Mushra.prototype.complete = function()
         $activePage ('input[name="fields[sounds]"]').val (sounds);
         $activePage ('input[name="fields[pages]"]').val (pages);
         $activePage ('input[name="fields[page_order]"]').val (pageOrder);
+        $activePage ('input[name="fields[page_response_time]"]').val (times);
         $activePage ('.submit-popup').popup ('open');
     }
     else{
