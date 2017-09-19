@@ -1,0 +1,9 @@
+_id: 7310f1f0-9d59-11e7-9300-0381fd250842
+name: My name
+experiment_id: similarity
+data: '10,26,30\n39,69,27\n8,36,52'
+sounds: 'Ref,2,3\nRef,5,6\nRef,5,6'
+pages: Set 1\nSet 2\nSet 2-duplicate
+page_order: 2\n1\n0
+page_response_time: undefined\nundefined\nundefined
+date: '2017-09-19T16:41:57.142Z'
