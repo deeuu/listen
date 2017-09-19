@@ -1,0 +1,9 @@
+_id: b8ce2c70-9d55-11e7-9300-0381fd250842
+name: My name
+experiment_id: similarity
+data: "80,23,70\r\n\r\n47,26,44\r\n\r\n98,30,26"
+sounds: "Ref,2,3\r\n\r\nRef,5,6\r\n\r\nRef,2,3"
+pages: 'Set 1,Set 2,Set 1-duplicate'
+page_order: '1,0,2'
+page_response_time: 'undefined,undefined,undefined'
+date: 1505837716
