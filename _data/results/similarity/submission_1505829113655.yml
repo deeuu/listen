@@ -1,0 +1,8 @@
+_id: b15bada0-9d41-11e7-9300-0381fd250842
+name: My name
+experiment_id: similarity
+data: '[[1,93,76]],[21,66,68]],[73,76,56]]'
+sounds: '[[Ref,2,3]],[Ref,5,6]],[Ref,5,6]]'
+pages: '[Set 1,Set 2,Set 2-duplicate]'
+page_order: '[2,0,1]'
+date: '2017-09-19T13:51:53.654Z'
