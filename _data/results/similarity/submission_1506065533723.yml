@@ -1,0 +1,13 @@
+_id: 26c2df50-9f68-11e7-a00a-81140243204c
+name: My name
+experiment_id: similarity
+data: >-
+  {"continuous_playback":true,"loop_playback":true,"randomise_slider_handle":true,"randomise_sounds_within_page":true,"randomise_pages":true,"show_number_on_slider":true,"must_play_all_samples_to_continue":false,"back_button_can_exit_test":true,"allow_submission":true,"add_consistency_check":true,"allow_slider_sort":true,"labels":["Dissimilar","Similar"],"pages":[{"name":"Set
+  1","reference_url":"sounds/dog1.wav","sounds":[{"name":"Ref","url":"sounds/dog1.wav","rating":"27"},{"name":2,"url":"sounds/dog2.wav","rating":"66"},{"name":3,"url":"sounds/dog3.wav","rating":"32"}],"order":1},{"name":"Set
+  2","reference_url":"sounds/dog4.wav","sounds":[{"name":"Ref","url":"sounds/dog4.wav","rating":"63"},{"name":5,"url":"sounds/dog5.wav","rating":"1"},{"name":6,"url":"sounds/dog6.wav","rating":"33"}],"order":0},{"name":"Set
+  1-duplicate","reference_url":"sounds/dog1.wav","sounds":[{"name":"Ref","url":"sounds/dog1.wav","rating":"72"},{"name":2,"url":"sounds/dog2.wav","rating":"97"},{"name":3,"url":"sounds/dog3.wav","rating":"75"}],"order":2}],"siteURL":"http://localhost:4000","nextURL":"http://localhost:4000/","separator":",","line_terminator":"\\n"}
+sounds: 'Ref,2,3\nRef,5,6\nRef,2,3'
+pages: Set 1\nSet 2\nSet 1-duplicate
+page_order: 1\n0\n2
+page_response_time: undefined\nundefined\nundefined
+date: '2017-09-22T07:32:13.722Z'
