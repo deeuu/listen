@@ -285,11 +285,13 @@ Mushra.prototype.fillConfig = function()
         this.config.pages[this.currentPage].sounds[this.currentPageSoundOrder[i]].rating = parseInt (value);
     }.bind(this);
 
-    if (this.config.pages[this.currentPage].duration == null)
+    var dur = this.config.pages[this.currentPage].duration;
+    if ((dur == null) || (dur == 0))
     {
-        this.config.pages[this.currentPage].duration = 0;
         if (this.loader.timerStarted)
             this.config.pages[this.currentPage].duration = this.loader.endTimer();
+        else
+            this.config.pages[this.currentPage].duration = 0;
     }
 
     this.config.pages[this.currentPage].order = this.pageCounter;
