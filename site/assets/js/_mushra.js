@@ -55,7 +55,8 @@ Mushra.prototype.configureButtons = function()
     $activePage ('.next').on("click", function (e){
 
         if (this.loader.haveAllBuffersPlayed() ||
-            !this.config.must_play_all_samples_to_continue)
+            !this.config.must_play_all_samples_to_continue ||
+            this.have_seen_this_page_before[this.pageCounter])
         {
             this.onNextOrBackButtonClick(1);
         }
@@ -104,6 +105,9 @@ Mushra.prototype.onNextOrBackButtonClick = function (direction)
     else
     {
         $activePage ('.back').show();
+
+        if (!this.have_seen_this_page_before[this.pageCounter])
+            this.have_seen_this_page_before[this.pageCounter] = true;
 
         this.fillConfig();
 
@@ -167,8 +171,6 @@ Mushra.prototype.setupGUI = function()
 
     this.createSliders();
 
-    if (!this.have_seen_this_page_before[this.pageCounter])
-        this.have_seen_this_page_before[this.pageCounter] = true;
 }
 
 Mushra.prototype.createSliders = function()
