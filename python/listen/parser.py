@@ -64,12 +64,13 @@ class MUSHRA(Parser):
                 rating.append(sound['rating'])
                 url.append(sound['url'])
 
-            temp = pd.DataFrame({'Sound': name,
-                                 'URL': url,
-                                 'Rating': rating,
-                                 'Page': page['name'],
-                                 'PageOrder': page['order'],
-                                 'PageDuration': page['duration'],
+            temp = pd.DataFrame({'sound': name,
+                                 'url': url,
+                                 'rating': rating,
+                                 'page': page['name'],
+                                 'page_order': page['order'],
+                                 'page_duration': page['duration'],
+                                 'is_replicate': page['is_replicate'],
                                  })
 
             frame = frame.append(temp)
