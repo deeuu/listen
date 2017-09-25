@@ -16,7 +16,8 @@ function Mushra(config) {
         idx = randomNumber (0, this.numberOfPages, true);
         this.numberOfPages += 1;
         var newPage = JSON.parse(JSON.stringify(this.config.pages[idx]));
-        newPage.name += '-duplicate';
+        this.config.pages[idx].is_replicated = true;
+        newPage.is_replicated = true;
         this.config.pages.push (newPage);
     }
 
@@ -56,7 +57,7 @@ Mushra.prototype.configureButtons = function()
 
         if (this.loader.haveAllBuffersPlayed() ||
             !this.config.must_play_all_samples_to_continue ||
-            this.have_seen_this_page_before[this.pageCounter])
+            ghis.have_seen_this_page_before[this.pageCounter])
         {
             this.onNextOrBackButtonClick(1);
         }
@@ -297,6 +298,9 @@ Mushra.prototype.fillConfig = function()
     }
 
     this.config.pages[this.currentPage].order = this.pageCounter;
+
+    if (this.config.pages[this.currentPage].is_replicated == null)
+        this.config.pages[this.currentPage].is_replicated = false;
 
     $activePage (".ui-slider input").each( function (i) {
         setRating (i, $(this).val());
