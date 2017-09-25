@@ -1,2 +1,19 @@
+# Website
 .sass-cache/
 _site/
+
+.ropeproject
+__pycache__
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
