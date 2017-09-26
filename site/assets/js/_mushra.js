@@ -150,12 +150,12 @@ Mushra.prototype.loadPage = function()
     for (var i = 0; i < this.numberOfSounds; ++i)
     {
         var thisSound = this.config.pages[this.currentPage].sounds[i];
-        this.urls[i] = this.config.siteURL + '/' + thisSound.url;
+        this.urls[i] = this.config.site_url + '/' + thisSound.url;
     }
 
     // Add the url to the reference audio. No need to store id here.
     this.urls.push(
-        this.config.siteURL + '/' + this.config.pages[this.currentPage].reference_url);
+        this.config.site_url + '/' + this.config.pages[this.currentPage].reference_url);
 
     // Configure the audio loader
     this.loader = new AudioLoader(this.urls,
@@ -318,6 +318,6 @@ Mushra.prototype.complete = function()
         $activePage ('.submit-popup').popup ('open');
     }
     else{
-        $.mobile.changePage (this.config.nextURL);
+        $.mobile.changePage (this.config.next_url);
     }
 }
