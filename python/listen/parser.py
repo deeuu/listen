@@ -50,7 +50,6 @@ class MUSHRA(Parser):
         Returns the mushra rating data as a Pandas DataFrame
         '''
         frame = pd.DataFrame()
-        frame['Subject'] = data['name']
 
         pages = data['data']['pages']
         for page in pages:
@@ -71,7 +70,12 @@ class MUSHRA(Parser):
                                  'page_order': page['order'],
                                  'page_duration': page['duration'],
                                  'is_replicate': page['is_replicate'],
+
                                  })
+
+            temp['Subject'] = data['name']
+            temp['on_web'] = ('http://localhost:' not in
+                              data['data']['site_url'])
 
             frame = frame.append(temp)
 
