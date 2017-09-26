@@ -11,7 +11,7 @@ function Soundboard(config) {
         for (var j = 0; j < config.rows[i].sounds.length; ++j)
         {
             var thisSound = config.rows[i].sounds[j];
-            urls.push(config.siteURL + '/' + thisSound.url);
+            urls.push(config.site_url + '/' + thisSound.url);
         }
     }
 

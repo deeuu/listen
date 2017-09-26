@@ -16,7 +16,8 @@ function Mushra(config) {
         idx = randomNumber (0, this.numberOfPages, true);
         this.numberOfPages += 1;
         var newPage = JSON.parse(JSON.stringify(this.config.pages[idx]));
-        newPage.name += '-duplicate';
+        this.config.pages[idx].is_replicate = true;
+        newPage.is_replicate = true;
         this.config.pages.push (newPage);
     }
 
@@ -55,7 +56,8 @@ Mushra.prototype.configureButtons = function()
     $activePage ('.next').on("click", function (e){
 
         if (this.loader.haveAllBuffersPlayed() ||
-            !this.config.must_play_all_samples_to_continue)
+            !this.config.must_play_all_samples_to_continue ||
+            ghis.have_seen_this_page_before[this.pageCounter])
         {
             this.onNextOrBackButtonClick(1);
         }
@@ -105,6 +107,9 @@ Mushra.prototype.onNextOrBackButtonClick = function (direction)
     {
         $activePage ('.back').show();
 
+        if (!this.have_seen_this_page_before[this.pageCounter])
+            this.have_seen_this_page_before[this.pageCounter] = true;
+
         this.fillConfig();
 
         this.pageCounter = selectMinimum (this.pageCounter + direction,
@@ -145,12 +150,12 @@ Mushra.prototype.loadPage = function()
     for (var i = 0; i < this.numberOfSounds; ++i)
     {
         var thisSound = this.config.pages[this.currentPage].sounds[i];
-        this.urls[i] = this.config.siteURL + '/' + thisSound.url;
+        this.urls[i] = this.config.site_url + '/' + thisSound.url;
     }
 
     // Add the url to the reference audio. No need to store id here.
     this.urls.push(
-        this.config.siteURL + '/' + this.config.pages[this.currentPage].reference_url);
+        this.config.site_url + '/' + this.config.pages[this.currentPage].reference_url);
 
     // Configure the audio loader
     this.loader = new AudioLoader(this.urls,
@@ -167,8 +172,6 @@ Mushra.prototype.setupGUI = function()
 
     this.createSliders();
 
-    if (!this.have_seen_this_page_before[this.pageCounter])
-        this.have_seen_this_page_before[this.pageCounter] = true;
 }
 
 Mushra.prototype.createSliders = function()
@@ -296,6 +299,9 @@ Mushra.prototype.fillConfig = function()
 
     this.config.pages[this.currentPage].order = this.pageCounter;
 
+    if (this.config.pages[this.currentPage].is_replicate == null)
+        this.config.pages[this.currentPage].is_replicate = false;
+
     $activePage (".ui-slider input").each( function (i) {
         setRating (i, $(this).val());
     });
@@ -312,6 +318,6 @@ Mushra.prototype.complete = function()
         $activePage ('.submit-popup').popup ('open');
     }
     else{
-        $.mobile.changePage (this.config.nextURL);
+        $.mobile.changePage (this.config.next_url);
     }
 }

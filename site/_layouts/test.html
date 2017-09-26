@@ -112,8 +112,8 @@ $('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
         });
 
         // add any variables we need:
-        config.siteURL = "{{ site.url }}";
-        config.nextURL = '{{ site.url }}{{ page.next_url }}';
+        config.site_url = "{{ site.url }}";
+        config.next_url = '{{ site.url }}{{ page.next_url }}';
 
         var layout = '{{ page.layout }}';
         var testInterface = null;
