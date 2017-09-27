@@ -3,11 +3,21 @@ import pandas as pd
 import json
 
 
+def listFiles(directory):
+    filenames = os.listdir(directory)
+    return [os.path.abspath(os.path.join(directory, _)) for _ in filenames]
+
+
 class Parser():
 
-    def __init__(self, path, excludes=None):
+    def __init__(self, path, excludes=[]):
+
         self.path = path
-        self.excludes = excludes
+
+        if isinstance(excludes, str):
+            self.excludes = [excludes]
+        else:
+            self.excludes = excludes
 
     def load(self, filename):
         '''
@@ -33,14 +43,20 @@ class Parser():
         if os.path.isdir(self.path):
 
             frame = pd.DataFrame()
-            for filename in os.listdir(self.path):
+
+            for filename in listFiles(self.path):
+
                 if (filename.endswith('.json') and
                         filename not in self.excludes):
-                    return frame.append(
+
+                    frame = frame.append(
                         self.to_dataframe(self.load(filename))
                     )
         else:
-            return self.to_dataframe(self.load(self.path))
+
+            frame = self.to_dataframe(self.load(self.path))
+
+        return frame
 
 
 class MUSHRA(Parser):
@@ -57,6 +73,7 @@ class MUSHRA(Parser):
             name = []
             rating = []
             url = []
+
             for sound in page['sounds']:
 
                 name.append(sound['name'])
@@ -70,12 +87,12 @@ class MUSHRA(Parser):
                                  'page_order': page['order'],
                                  'page_duration': page['duration'],
                                  'is_replicate': page['is_replicate'],
-
                                  })
 
-            temp['Subject'] = data['name']
             temp['on_web'] = ('http://localhost:' not in
                               data['data']['site_url'])
+            temp['experiment'] = data['experiment_id']
+            temp['subject'] = data['name']
 
             frame = frame.append(temp)
 
