@@ -21,7 +21,9 @@ function Mushra(config) {
         this.config.pages.push (newPage);
     }
 
-    this.have_seen_this_page_before = arrayFilledWith(false, this.numberOfPages);
+    // this.numberOfPages + 1 so we can check if user has seen future pages
+    this.have_seen_this_page_before = arrayFilledWith(false,
+                                                      this.numberOfPages + 1);
 
     // Order of pages
     this.pageOrder = fromAToBArray(0, this.numberOfPages);
@@ -57,7 +59,8 @@ Mushra.prototype.configureButtons = function()
 
         if (this.loader.haveAllBuffersPlayed() ||
             !this.config.must_play_all_samples_to_continue ||
-            ghis.have_seen_this_page_before[this.pageCounter])
+            this.have_seen_this_page_before[this.pageCounter + 1])
+
         {
             this.onNextOrBackButtonClick(1);
         }
