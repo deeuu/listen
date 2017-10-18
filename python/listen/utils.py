@@ -22,3 +22,20 @@ def bootstrap_ci(data, stat, n=1000, conf_level=95, plot=False):
         plt.show()
 
     return np.percentile(out, [lo_cut, hi_cut])
+
+
+def concordance(x, y):
+    '''
+    Computes the concordance correlation coefficient of two vectors x and y.
+    '''
+    x, y = x.flatten(), y.flatten()
+
+    x_mean = np.mean(x)
+    y_mean = np.mean(y)
+
+    cov = np.cov(x, y, bias=True)
+    x_var = cov[0, 0]
+    y_var = cov[1, 1]
+    cov = cov[0, 1]
+
+    return 2 * cov / (x_var + y_var + (x_mean - y_mean) ** 2)

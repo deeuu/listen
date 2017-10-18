@@ -1,3 +1,4 @@
+import krippendorff
 import pandas as pd
 import numpy as np
 from . import utils
@@ -22,3 +23,9 @@ def confidence_interval(r, conf_level=95, stat=np.mean):
 def average(r):
 
     return z_to_r(np.mean(r_to_z(r)))
+
+
+def krippendorffs_alpha(data, level_of_measurement='ratio'):
+
+    return krippendorff.alpha(reliability_data=data,
+                              level_of_measurement=level_of_measurement)

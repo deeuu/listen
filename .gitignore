@@ -5,6 +5,10 @@ _site/
 .ropeproject
 __pycache__
 
+# venv
+python/create_venv.sh
+python/py3
+
 # Packages
 *.egg
 *.egg-info
