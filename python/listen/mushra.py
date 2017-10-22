@@ -108,18 +108,13 @@ def inter_rater_reliability(frame, col='rating', data_type='ratio', remove=None)
     return alpha, get_descriptives(alpha.groupby('experiment'))
 
 
-def within_subject_agreement(frame, col='rating', mean_or_median='mean'):
+def within_subject_agreement(frame, col='rating'):
     '''
     Computes Spearman, Pearson and Concordance correlations on replicated
     ratings.
 
     Returns a new Dataframe.
     '''
-
-    if mean_or_median == 'mean':
-        stat = np.mean
-    else:
-        stat = np.median
 
     def spearmanr(data):
 
@@ -155,30 +150,8 @@ def within_subject_agreement(frame, col='rating', mean_or_median='mean'):
 
     corrs = pd.concat([spear, pear, concor], axis=1)
 
-    if mean_or_median == 'mean':
-        estimate = corrs.groupby('experiment').agg(correlation.average)
-    else:
-        estimate = corrs.groupby('experiment').agg(stat)
 
-    ci_spearman = corrs.groupby('experiment')['spearman'].apply(
-        lambda g: correlation.confidence_interval(g, stat=stat)
-    )
-
-    ci_pearson = corrs.groupby('experiment')['pearson'].apply(
-        lambda g: correlation.confidence_interval(g, stat=stat)
-    )
-
-    ci_concor = corrs.groupby('experiment')['concordance'].apply(
-        lambda g: correlation.confidence_interval(g, stat=stat)
-    )
-
-    return WithinCorrelations(correlation=corrs,
-                              spearman=estimate['spearman'],
-                              spearman_ci=ci_spearman,
-                              pearson=estimate['pearson'],
-                              pearson_ci=ci_pearson,
-                              concordance=estimate['concordance'],
-                              concordance_ci=ci_concor)
+    return corrs, get_descriptives(corrs.groupby('experiment'))
 
 
 def subject_vs_group(frame,
