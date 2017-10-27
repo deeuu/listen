@@ -67,7 +67,7 @@ def normalise_ratings(frame, inplace=False):
         frame = frame.copy()
 
     frame['rating'] = frame.groupby(
-        ['subject', 'experiment', 'page'])['rating'].transform(
+        ['subject', 'experiment', 'page_order'])['rating'].transform(
             lambda g: 100 * (g - g.min()) / (g.max() - g.min())
         )
 
