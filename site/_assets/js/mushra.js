@@ -162,8 +162,8 @@ Mushra.prototype.loadPage = function()
 
     // Configure the audio loader
     this.loader = new AudioLoader(this.urls,
-                                  this.config.continuous_playback,
-                                  this.config.loop_playback);
+                                             this.config.continuous_playback,
+                                             this.config.loop_playback);
 
     $activePage ('.mushra-container').hide();
     this.loader.load (this.setupGUI.bind(this));

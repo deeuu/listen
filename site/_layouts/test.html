@@ -88,7 +88,17 @@
 {{ content }}
 </div>
 
-<!-- JS for interface instantiation -->
+<script type="text/javascript">
+  /* This ID page wrapper around `main' is needed to get the correct javascript
+  triggered with cached pages. I can't come up with anything cleaner at the
+  moment */
+  $('#id-{{ page.url  | slugify}}').on('pageshow', function () {
+    window.Listen.main('{{ config | jsonify}}', '{{ page.layout }}')
+  })
+</script>
+
+
+<!-- JS for interface instantiation
 <script type="text/javascript">
 
 $('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
@@ -127,6 +137,7 @@ $('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
 });
 
 </script>
+-->
 
 </div>
 </body>
