@@ -83,7 +83,7 @@ def rank_ratings(frame, inplace=False):
         frame = frame.copy()
 
     frame['rank'] = frame.groupby(
-        ['subject', 'experiment', 'page'])['rating'].rank()
+        ['subject', 'experiment', 'page_order'])['rating'].rank()
 
     return frame
 
