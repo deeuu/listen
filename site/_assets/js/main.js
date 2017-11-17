@@ -1,19 +1,11 @@
 import {$, activePage} from './dollar.js'
 import {Soundboard} from './soundboard.js'
+import {Mushra} from './mushra.js'
 
 /*
  * Globals
  */
-
-var Listen = window.Listen || {}
-
-
-Listen.main = (config, layout) => {
-  /*
-   * Initial configuration
-   */
-  config = JSON.parse(config)
-
+function setup (config) {
   // Undo previous bindings:
   activePage('.next').off()
   activePage('.back').off()
@@ -28,15 +20,18 @@ Listen.main = (config, layout) => {
     $('.submit-popup').popup('close')
   })
 
-  /*
-   * Main interface
-   */
-
-  switch (layout) {
-    case 'soundboard':
-      var currentInterface = new Soundboard(config)
-      break
-  }
+  return JSON.parse(config)
 }
 
-window.Listen = Listen
+function createSoundboard (config) {
+  return new Soundboard(setup(config))
+}
+
+function createMUSHRA (config) {
+  return new Mushra(setup(config))
+}
+
+window.listen = {
+  createSoundboard: createSoundboard,
+  createMUSHRA: createMUSHRA
+}

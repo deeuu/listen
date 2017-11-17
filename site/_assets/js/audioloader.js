@@ -1,13 +1,10 @@
 import {$} from './dollar.js'
 import {arrayFilledWith} from './utils.js'
+import {audioContext} from './audioengine.js'
+
 /*
  * AudioLoader
  */
-
-let AudioContext = window.AudioContext || window.webkitAudioContext
-window.Listen = window.Listen || {}
-window.Listen.audioContext = window.Listen.audioContext || new AudioContext()
-var audioContext = window.Listen.audioContext
 
 export function AudioLoader (urlList, continuousPlayback, loopPlayback) {
   this.urlList = urlList
