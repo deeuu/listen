@@ -1,7 +1,7 @@
 # Site Settings
 title: "Listen"
 description: >
-    "Blank"
+    "Run listening tests in the browser locally or via GitHub pages"
 baseurl: ""
 url: "https://deeuu.github.io/listen"
 
