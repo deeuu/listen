@@ -13,5 +13,10 @@ github:
 # Build Setting
 include: 
     - '_pages'
+exclude:
+  - package.json
+  - node_modules
+  - gulpfile.js
+
 kramdown:
   input: GFM

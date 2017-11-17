@@ -48,6 +48,8 @@ export function Mushra (config) {
 }
 
 Mushra.prototype.configureButtons = function () {
+  // Store the next_url and then remove
+  this.next_url = activePage('.next').attr('href')
   activePage('.next').removeAttr('href')
 
   activePage('.next').on('click', function (e) {
@@ -282,6 +284,6 @@ Mushra.prototype.complete = function () {
     activePage('input[name="fields[data]"]').val(jsonString)
     activePage('.submit-popup').popup('open')
   } else {
-    $.mobile.changePage(this.config.next_url)
+    $.mobile.changePage(this.next_url)
   }
 }

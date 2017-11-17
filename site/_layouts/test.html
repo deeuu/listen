@@ -89,59 +89,19 @@
 </div>
 
 <script type="text/javascript">
-  /* This ID page wrapper around `main' is needed to get the correct javascript
+  /* This ID page wrapper is needed to get the correct javascript
   triggered with cached pages. I can't come up with anything cleaner at the
   moment */
 
   $('#id-{{ page.url  | slugify}}').on('pageshow', function () {
-      if ('{{ page.layout }}' == 'soundboard')
+      if ('{{ page.layout }}' === 'soundboard')
         window.listen.createSoundboard('{{ config | jsonify}}')
-      else if ('{{ page.layout }}' == 'mushra')
+      else if ('{{ page.layout }}' === 'mushra')
+        window.listen.createMUSHRA('{{ config | jsonify}}')
+      else if ('{{ page.layout }}' === 'similarity')
         window.listen.createMUSHRA('{{ config | jsonify}}')
   })
 </script>
-
-
-<!-- JS for interface instantiation
-<script type="text/javascript">
-
-$('#id-{{ page.url  | slugify}}').on('pageshow', function(e) {
-
-    var config = JSON.parse('{{ config | jsonify}}');
-
-    if (config != null & e.type == 'pageshow')
-    {
-        // Undo previous bindings:
-        $activePage ('.next').off();
-        $activePage ('.back').off();
-        $activePage ('.ui-content').find('*').off();
-
-        // Show loading spinner when user clicks submit
-        $activePage ('.submit-form').on ('submit', function(e){
-            $.mobile.loading('show');
-        });
-
-        $activePage ('.submit-form .cancel').on ('click', function(e) {
-            $activePage ('.submit-popup').popup("close");
-        });
-
-        // add any variables we need:
-        config.site_url = "{{ site.url }}";
-        config.next_url = '{{ site.url }}{{ page.next_url }}';
-
-        var layout = '{{ page.layout }}';
-        var testInterface = null;
-
-        if (layout == 'mushra' || layout == 'similarity')
-            testInterface = new Mushra (config);
-        else if (layout == 'soundboard')
-            testInterface = new Soundboard (config);
-    }
-
-});
-
-</script>
--->
 
 </div>
 </body>

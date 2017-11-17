@@ -2,9 +2,6 @@ import {$, activePage} from './dollar.js'
 import {Soundboard} from './soundboard.js'
 import {Mushra} from './mushra.js'
 
-/*
- * Globals
- */
 function setup (config) {
   // Undo previous bindings:
   activePage('.next').off()
@@ -31,6 +28,7 @@ function createMUSHRA (config) {
   return new Mushra(setup(config))
 }
 
+// Expose globally
 window.listen = {
   createSoundboard: createSoundboard,
   createMUSHRA: createMUSHRA
