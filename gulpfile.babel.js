@@ -10,6 +10,7 @@ import child from 'child_process'
 import gutil from 'gulp-util'
 import del from 'del'
 import minify from 'gulp-babel-minify'
+import runSequence from 'run-sequence'
 
 // sass to single css file
 gulp.task('sass', () => {
@@ -23,13 +24,15 @@ gulp.task('sass', () => {
 
 // Javascript to single js file
 gulp.task('js', () => {
-  browserify(['./_assets/js/listen.js'])
-  .transform(babelify)
-  .bundle()
-  .pipe(source('listen.js'))
-  .pipe(buffer())
-  .pipe(minify())
-  .pipe(gulp.dest('./assets/js'))
+  return (
+    browserify(['./_assets/js/listen.js'])
+    .transform(babelify)
+    .bundle()
+    .pipe(source('listen.js'))
+    .pipe(buffer())
+    .pipe(minify())
+    .pipe(gulp.dest('./assets/js'))
+  )
 })
 
 gulp.task('watch', () => {
@@ -56,26 +59,36 @@ gulp.task('jekyll', () => {
 
   jekyll.stdout.on('data', jekyllLogger)
   jekyll.stderr.on('data', jekyllLogger)
+
+  return jekyll
 })
 
 gulp.task('jekyll-build', () => {
   const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'build'])
   jekyll.stdout.on('data', jekyllLogger)
   jekyll.stderr.on('data', jekyllLogger)
+
+  return jekyll
 })
 
-gulp.task('clean', function () {
+gulp.task('clean', () => {
   return del([
-    'assets',
-    '_site',
-    '.publish'
+    './assets',
+    './.publish'
   ])
 })
 
-gulp.task('default', ['js', 'sass', 'jekyll', 'watch'])
-gulp.task('build', ['js', 'sass', 'jekyll-build'])
-
-gulp.task('deploy', ['build'], () => {
-  return gulp.src('./_site/**/*')
-    .pipe(deploy())
+gulp.task('build', (cb) => {
+  runSequence(['js', 'sass'], 'jekyll-build', cb)
 })
+
+gulp.task('gh-pages', () => {
+  return gulp.src('./_site/**/*')
+  .pipe(deploy())
+})
+
+gulp.task('deploy', () => {
+  runSequence('build', 'gh-pages')
+})
+
+gulp.task('default', ['js', 'sass', 'jekyll', 'watch']) // fix this
