@@ -1,3 +1,4 @@
+import deploy from 'gulp-gh-pages'
 import gulp from 'gulp'
 import sass from 'gulp-sass'
 import concat from 'gulp-concat'
@@ -72,3 +73,8 @@ gulp.task('clean', function () {
 
 gulp.task('default', ['js', 'sass', 'jekyll', 'watch'])
 gulp.task('build', ['js', 'sass', 'jekyll-build'])
+
+gulp.task('deploy', ['build'], () => {
+  return gulp.src('./_site/**/*')
+    .pipe(deploy())
+})
