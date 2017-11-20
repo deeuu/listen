@@ -1,22 +1,28 @@
 # Listen
 
 - Listen uses [Jekyll](https://jekyllrb.com/) to generate a (mobile-friendly)
-static website that can be served locally or online using [GitHub pages](https://pages.github.com/)
+  static website that can be served locally or online using
+  [GitHub pages](https://pages.github.com/)
 
 - The theme includes different interfaces for conducting listening tests, via
-- the [Web-Audio
-API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). At
-present, interfaces are limited to a soundboard and a [MUSHRA](https://en.wikipedia.org/wiki/MUSHRA)-inspired slider interface
+  the [Web-Audio API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API).
+  At present, interfaces are limited to a soundboard and a
+  [MUSHRA](https://en.wikipedia.org/wiki/MUSHRA)-inspired slider interface
 
-- For online tests, [Staticman](https://github.com/eduardoboucas/staticman) is used to process results (submitted by participants) as data files and uploaded to your GitHub repository
+- For online tests, [Staticman](https://github.com/eduardoboucas/staticman) is
+  used to process results (submitted by participants) as data files and
+  uploaded to your GitHub repository
 
-- Listen includes a Python package for parsing, compiling and analysing these data
+- Listen includes a Python package for parsing, compiling and analysing these
+  data
 
 ## Installation
 
 ### Get Jekyll up and running
 
-1. Install `rbenv` to manage Ruby. You may need dependencies for `rbenv`, see [here](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-16-04).
+1. Install `rbenv` to manage Ruby. You may need dependencies for `rbenv`,
+   compare
+   [this tutorial](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-16-04).
 ```
 git clone https://github.com/rbenv/rbenv.git ~/.bashrc
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
@@ -54,7 +60,8 @@ make install
 curl https://www.npmjs.org/install.sh | sh
 ```
 
-2. Install [npm](https://docs.npmjs.com/cli/install) dependencies under `node_modules`
+2. Install [npm](https://docs.npmjs.com/cli/install) dependencies under
+   `node_modules`
 ```
 git clone https://github.com/deeuu/listen
 cd listen/site
