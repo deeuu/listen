@@ -67,7 +67,8 @@ gulp.task('jekyll-build', () => {
 gulp.task('clean', function () {
   return del([
     'assets',
-    '_site'
+    '_site',
+    '.publish'
   ])
 })
 
