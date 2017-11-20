@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://deeuu.github.io/listen/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://deeuu.github.io/listen/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://deeuu.github.io/listen/images/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://deeuu.github.io/listen/images/favicon/manifest.json">
+    <link rel="mask-icon" href="https://deeuu.github.io/listen/images/favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800,600' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Include the jQuery Mobile library-->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <!-- Listen -->
+    <link rel="stylesheet" href="https://deeuu.github.io/listen/assets/css/listen.css">
+    <script src="https://deeuu.github.io/listen/assets/js/listen.js"></script>
+
+</head> 
+
+
+<body>
+
+<div data-role='page' id='id-soundboard'>
+
+
+
+<div class='menu' data-role="collapsible" 
+                  data-collapsed="true"
+                  data-collapsed-icon="carat-d"
+                  data-expanded-icon="carat-u">
+    <h4 class='cen'>Menu</h4>
+
+<ul data-role="listview" data-inset="false">
+
+
+
+
+
+    <li data-icon="false">
+    <a class='page-link' href="https://deeuu.github.io/listen/">Welcome</a>
+    </li>
+
+
+
+
+
+
+    <div data-role="collapsible"
+         data-collapsed="true"
+         class="inner-collapsible menu"
+         data-collapsed-icon="carat-d"
+         data-expanded-icon="carat-u">
+    <h4>Interface layouts</h4>
+
+    <ul data-role="listview">
+    
+    <li data-icon="false">
+        <a class='page-link'
+            href="https://deeuu.github.io/listen/mushra/">MUSHRA</a>
+    </li>
+    
+    <li data-icon="false">
+        <a class='page-link'
+            href="https://deeuu.github.io/listen/similarity/">Similarity</a>
+    </li>
+    
+    <li data-icon="false">
+        <a class='page-link'
+            href="https://deeuu.github.io/listen/soundboard/">Soundboard</a>
+    </li>
+    
+    </ul>
+
+    </div>
+
+
+
+</ul>
+</div>
+
+
+
+
+
+
+<div data-role="header">
+
+<a 
+    class='ui-btn-left ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-left ui-icon-carat-l back'>
+    Previous
+</a>
+
+<h1 class='title'>Soundboard</h1>
+
+<a 
+    href="https://deeuu.github.io/listen/mushra/"
+    class='ui-btn-right ui-btn ui-btn-inline ui-mini
+           ui-corner-all ui-btn-icon-right ui-icon-carat-r next'>
+    Next
+</a>
+</div>
+
+<!-- Popup window if all listener tries to move on before listening to all samples -->
+<div data-role="popup" class="listen-to-all-samples-popup" data-position-to="window" data-transition="turn">
+    <p>Please listen to all samples before moving on</p>
+</div>
+
+<div data-role="popup" class="submission-wait-popup" data-position-to="window" data-transition="turn">
+    <p>Please wait for this page to redirect...</p>
+</div>
+
+<!-- Popup window for submissions -->
+<div data-role='popup'
+     data-position-to='window'
+     class='ui-corner-all ui-popup ui-body-a ui-overlay-shadow submit-popup'
+     data-theme='b'
+     data-dismissible="false"
+     >
+
+<form method="post"
+      action="https://api.staticman.net/v2/entry/deeuu/listen/gh-pages"
+      class='submit-form'
+      >
+
+<h2>Thank you, please submit your data:</h2>
+
+<input name="options[slug]" type="hidden" value='soundboard'>
+<input name="options[redirect]" type="hidden" value='https://deeuu.github.io/listen/mushra/'>
+
+<input name='fields[name]'
+       value='My name'
+       type='text'
+>
+
+<input name='fields[experiment_id]'
+       value='soundboard'
+       type='hidden'
+>
+
+<input name='fields[data]'
+       value=''
+       type='hidden'
+>
+
+<input type='submit'
+       value='Submit'
+       >
+
+<input type='button'
+       value='Cancel'
+       class='cancel'
+       >
+</form>
+</div>
+
+<!-- Main layout -->
+<div data-role="main" class="ui-content">
+<h1 id="soundboard">Soundboard</h1>
+
+
+
+
+<ul class="soundboard-container">
+ 
+<button class="soundboard-stop" data-inline="true">Stop</button>
+
+
+
+<p> Set 1 </p>
+
+<li>
+
+
+
+<button class="soundboard-play" data-inline="true">1</button>
+
+
+
+<button class="soundboard-play" data-inline="true">2</button>
+
+
+
+<button class="soundboard-play" data-inline="true">3</button>
+
+
+
+</li>
+
+
+
+<p> Set 2 </p>
+
+<li>
+
+
+
+<button class="soundboard-play" data-inline="true">4</button>
+
+
+
+<button class="soundboard-play" data-inline="true">5</button>
+
+
+
+<button class="soundboard-play" data-inline="true">6</button>
+
+
+
+</li>
+
+
+
+</ul>
+
+</div>
+
+<script type="text/javascript">
+  /* This ID page wrapper is needed to get the correct javascript
+  triggered with cached pages. I can't come up with anything cleaner at the
+  moment */
+
+  $('#id-soundboard').on('pageshow', function () {
+      if ('soundboard' === 'soundboard')
+        window.listen.createSoundboard('{"back_button_can_exit_test":true,"continuous_playback":true,"loop_playback":true,"rows":[{"name":"Set 1","sounds":[{"button_label":1,"url":"sounds/dog1.wav"},{"button_label":2,"url":"sounds/dog2.wav"},{"button_label":3,"url":"sounds/dog3.wav"}]},{"name":"Set 2","sounds":[{"button_label":4,"url":"sounds/dog4.wav"},{"button_label":5,"url":"sounds/dog5.wav"},{"button_label":6,"url":"sounds/dog6.wav"}]}]}')
+      else if ('soundboard' === 'mushra')
+        window.listen.createMUSHRA('{"back_button_can_exit_test":true,"continuous_playback":true,"loop_playback":true,"rows":[{"name":"Set 1","sounds":[{"button_label":1,"url":"sounds/dog1.wav"},{"button_label":2,"url":"sounds/dog2.wav"},{"button_label":3,"url":"sounds/dog3.wav"}]},{"name":"Set 2","sounds":[{"button_label":4,"url":"sounds/dog4.wav"},{"button_label":5,"url":"sounds/dog5.wav"},{"button_label":6,"url":"sounds/dog6.wav"}]}]}')
+      else if ('soundboard' === 'similarity')
+        window.listen.createMUSHRA('{"back_button_can_exit_test":true,"continuous_playback":true,"loop_playback":true,"rows":[{"name":"Set 1","sounds":[{"button_label":1,"url":"sounds/dog1.wav"},{"button_label":2,"url":"sounds/dog2.wav"},{"button_label":3,"url":"sounds/dog3.wav"}]},{"name":"Set 2","sounds":[{"button_label":4,"url":"sounds/dog4.wav"},{"button_label":5,"url":"sounds/dog5.wav"},{"button_label":6,"url":"sounds/dog6.wav"}]}]}')
+  })
+</script>
+
+</div>
+</body>
+</html>

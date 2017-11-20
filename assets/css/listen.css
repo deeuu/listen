@@ -1,0 +1,122 @@
+h1,
+h2,
+h3 {
+  color: #19CCAA;
+  font-family: "Muli", sans-serif;
+  line-height: 1.5; }
+
+h1, h2 {
+  text-align: center; }
+
+div.ui-content {
+  color: black;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.6;
+  padding: 0;
+  width: 90%;
+  margin-left: 5%; }
+  @media only screen and (min-width: 768px) {
+    div.ui-content {
+      width: 60%;
+      margin-left: 20%;
+      margin: 0px auto; } }
+  @media only screen and (min-width: 1140px) {
+    div.ui-content {
+      width: 50%;
+      margin-left: 25%;
+      margin: 0px auto; } }
+
+.menu {
+  margin: 0 !important; }
+
+.inner-collapsible {
+  margin: 0px !important; }
+
+.mushra-container {
+  text-align: center; }
+
+.mushra-table {
+  table-layout: fixed;
+  padding: 0;
+  width: 95%;
+  margin-left: 2.5%;
+  font-size: 0.7em;
+  border-collapse: collapse; }
+  @media only screen and (min-width: 768px) {
+    .mushra-table {
+      font-size: 1em; } }
+  @media only screen and (min-width: 1140px) {
+    .mushra-table {
+      font-size: 1em; } }
+
+.mushra-table th {
+  color: #19CCAA;
+  border: 1px solid black; }
+
+.mushra-slider-container {
+  text-align: center;
+  display: table;
+  margin: 0px auto;
+  width: 100%; }
+
+.mushra-slider-container .ui-slider-track {
+  width: 95%;
+  margin-left: 2.5%;
+  pointer-events: none !important; }
+
+.mushra-slider-container .slider-handle-active {
+  background-color: #3d3c3c !important;
+  color: #ffffff !important; }
+
+.mushra-slider-container .ui-slider-track a {
+  pointer-events: auto !important; }
+
+.similarity-table {
+  table-layout: fixed;
+  font-size: 1em;
+  border-collapse: collapse;
+  width: 95%;
+  margin-left: 2.5%;
+  text-align: left; }
+
+.similarity-table th {
+  color: #19CCAA;
+  border: 0px; }
+
+.similarity-table .left-label {
+  text-align: left; }
+
+.similarity-table .right-label {
+  text-align: right;
+  color: #19CCAA; }
+
+.soundboard-container {
+  text-align: center;
+  margin: 0px auto;
+  display: table;
+  list-style: none;
+  padding-left: 0;
+  overflow: hidden; }
+
+#submit-container {
+  text-align: center;
+  margin: auto;
+  height: 100%; }
+
+div.ui-input-text input {
+  text-align: center !important; }
+
+div.ui-input-text {
+  width: 200px;
+  margin: 10px auto 10px auto; }
+
+div.ui-input-btn {
+  width: 200px !important;
+  margin: 10px auto 10px auto;
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
+  box-sizing: border-box; }
+
