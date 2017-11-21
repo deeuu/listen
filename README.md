@@ -20,6 +20,13 @@ present, interfaces are limited to a soundboard and a [MUSHRA](https://en.wikipe
 
 - Listen includes a Python package for parsing, compiling and analysing these data
 
+## Examples
+
+Listen has been used in the following projects:
+
+- [Perceptual evaluation of source separation algorithms](https://cvssp.github.io/perceptual-study-source-separation/)
+- [Perceptual Evaluation of Source Separation for Remixing Music](https://hagenw.github.io/2017/evaluation_of_source_separation_for_remixing/)
+
 ## Installation
 
 ### Get Jekyll up and running
@@ -148,7 +155,6 @@ npx gulp deploy
 
 1. Build and serve locally with `npx gulp` (inside `./site`). This will generate the static site inside
    `./site/_site` which will be served at `localhost:4000`.
-
 
 ## Similar software
 
