@@ -2,7 +2,7 @@ import {$, activePage} from './dollar.js'
 import {Soundboard} from './soundboard.js'
 import {Mushra} from './mushra.js'
 
-function setup (config) {
+function setup (config, siteURL) {
   // Undo previous bindings:
   activePage('.next').off()
   activePage('.back').off()
@@ -17,15 +17,17 @@ function setup (config) {
     $('.submit-popup').popup('close')
   })
 
-  return JSON.parse(config)
+  config = JSON.parse(config)
+  config.siteURL = siteURL
+  return config
 }
 
-function createSoundboard (config) {
-  return new Soundboard(setup(config))
+function createSoundboard (config, siteURL) {
+  return new Soundboard(setup(config, siteURL))
 }
 
-function createMUSHRA (config) {
-  return new Mushra(setup(config))
+function createMUSHRA (config, siteURL) {
+  return new Mushra(setup(config, siteURL))
 }
 
 // Expose globally

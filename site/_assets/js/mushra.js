@@ -129,15 +129,14 @@ Mushra.prototype.loadPage = function () {
   this.numberOfSounds = this.currentPageSoundOrder.length
 
   this.urls = new Array(this.numberOfSounds)
-  let baseUrl = window.location.origin
 
   for (let i = 0; i < this.numberOfSounds; ++i) {
     let thisSound = this.config.pages[this.currentPage].sounds[i]
-    this.urls[i] = baseUrl + '/' + thisSound.url
+    this.urls[i] = this.config.siteURL + '/' + thisSound.url
   }
 
   // Add the url to the reference audio. No need to store id here.
-  this.urls.push(baseUrl + '/' + this.config.pages[this.currentPage].reference_url)
+  this.urls.push(this.config.siteURL + '/' + this.config.pages[this.currentPage].reference_url)
 
     // Configure the audio loader
   this.loader = new AudioLoader(this.urls,

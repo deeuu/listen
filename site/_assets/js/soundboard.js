@@ -5,16 +5,13 @@ export function Soundboard (config) {
   this.config = config
 
   // Grab audio urls relative to site url
-  let baseUrl = window.location.origin
   var urls = []
   for (var i = 0; i < config.rows.length; ++i) {
     for (var j = 0; j < config.rows[i].sounds.length; ++j) {
       var thisSound = config.rows[i].sounds[j]
-      urls.push(baseUrl + '/' + thisSound.url)
+      urls.push(config.siteURL + '/' + thisSound.url)
     }
   }
-
-  window.console.log(config)
 
   // Configure the audio loader
   this.loader = new AudioLoader(urls, config.continuous_playback, config.loop_playback)

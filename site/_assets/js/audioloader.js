@@ -29,9 +29,7 @@ export function AudioLoader (urlList, continuousPlayback, loopPlayback) {
 }
 
 AudioLoader.prototype.loadBuffer = function (url, index, callBack) {
-  console.log('Loading ', url, ' (index: ', index, ')')
-
-    // Load buffer asynchronously
+  // Load buffer asynchronously
   var request = new XMLHttpRequest()
   request.responseType = 'arraybuffer'
   request.open('GET', url, true)
@@ -87,8 +85,6 @@ AudioLoader.prototype.load = function (callBack) {
 AudioLoader.prototype.play = function (index) {
   if ((index !== this.currentIndex) && this.allOk) {
     this.switchStop()
-
-    console.log('Playing index: ', index)
 
         // get an AudioBufferSourceNode for playing our buffer
     this.source = audioContext.createBufferSource()
@@ -153,8 +149,6 @@ AudioLoader.prototype.switchStop = function () {
 
 AudioLoader.prototype.stop = function (resetStartPosition) {
   if (this.source) {
-    console.log('Stopping index: ', this.currentIndex)
-
     var whenToStop = audioContext.currentTime + this.fadeTime
 
     var currentGainNode = this.gainNodes[this.gainNodeIndex]
