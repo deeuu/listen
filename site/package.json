@@ -1,7 +1,7 @@
 {
   "name": "listen",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Run listening tests in the browser locally or via GitHub pages",
   "main": "gulpfile.js",
   "dependencies": {
     "babel-require": "^1.0.1"
@@ -14,21 +14,22 @@
     "babel-preset-es2015": "^6.24.1",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
-    "browserify-shim": "^3.8.14",
-    "child_process": "^1.0.2",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-babel-minify": "^0.2.0",
     "gulp-concat": "^2.6.1",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-run": "^1.7.1",
     "gulp-sass": "^3.1.0",
     "gulp-standard": "^10.1.1",
     "gulp-util": "^3.0.8",
+    "run-sequence": "^2.2.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Dominic Ward",
+  "license": "MIT"
 }
