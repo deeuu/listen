@@ -1,7 +1,7 @@
 # Listen
 
-__This project is currently in a state of heavy development and is not yet
-intended for deployment__
+*This project is currently in a state of heavy development and is not yet
+intended for deployment*
 
 - Listen uses [Jekyll](https://jekyllrb.com/) to generate a (mobile-friendly)
 static website that can be served locally or online using [GitHub pages](https://pages.github.com/)
@@ -37,27 +37,28 @@ source ~/.bashrc
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 ```
 
-3. Install Ruby and set default
+3. Install Ruby and set the default global version
 ```
 rbenv install 2.4.1
 rbenv global 2.4.1
 ```
 
-3. Install the bundler gem
+4. Install the bundler gem
 ```
 gem install bundler
 ```
 
-4. Install Jekyll
-```gem install jekyll
+5. Install Jekyll
+```
+gem install jekyll
 ```
 
 ### Install Node.js and npm
 
-Note: You can install the pre-built `Node.js` (with `npm` bundled) installer
-[here](https://nodejs.org/en/download/).
+*Note: You can install the pre-built `Node.js` (with `npm` bundled) installer
+[here](https://nodejs.org/en/download/)*
 
-You can install `Node.js` directly from GitHub. For
+You can install `Node.js` locally from the [GitHub repository](rbenv global 2.4.1). For
 [example](https://gist.github.com/isaacs/579814)
 ```
 mkdir ~/local
@@ -71,10 +72,10 @@ make install
 
 ## Setup your site for GitHub pages
 
-The following assumes that your static site will live on the `gh-pages` branch
-of your website.
+*The following assumes that your static site will live on the `gh-pages` branch
+of your website*
 
-1. Clone the this repository
+1. Clone this repository
 ```
 git clone https://github.com/deeuu/listen
 ```
@@ -85,8 +86,8 @@ git remote set-url https://github.com/USERNAME/REPOSITORY.git
 ```
 
 3. Edit the following files:
-    - `_config.yml` (optional): set the `title` of your site.
-    - `_config.yml`: replace the `url` item.
+    - `./site/_config.yml`: set the `title` of your site.
+    - `./site/_config.yml`: replace the `url` item.
 
 4. Add [Staticman](https://staticman.net/docs/) to your repository:
     - Go to your GitHub repository and hit the **Settings** page
@@ -95,14 +96,23 @@ git remote set-url https://github.com/USERNAME/REPOSITORY.git
     ```
     https://api.staticman.net/v2/connect/{your GitHub username}/{your repository name}
     ```
-5. Update the homepage `index.md`.
-
-6. Create a new page under a new subdirectory in the `_pages` folder:
+5. Update the homepage `./site/index.md`, e.g.
 ```
-mkdir _pages/mynewpage && touch _pages/mynewpage/index.md
+---
+layout: page
+title: Welcome
+next_url: /mynewpage/
+---
+# Welcome to Listen
 ```
 
-7. Add the following [frontmatter](https://jekyllrb.com/docs/frontmatter/) and text to `_pages/mynewpage/index.md`:
+6. Create a new page under a new subdirectory in the `./site/_pages` folder:
+```
+mkdir ./site/_pages/mynewpage
+touch ./site/_pages/mynewpage/index.md
+```
+
+7. Add the following [frontmatter](https://jekyllrb.com/docs/frontmatter/) and text to `./site/_pages/mynewpage/index.md`:
 ```
 ---
 layout: page
@@ -113,7 +123,7 @@ title: Greetings
 Welcome to my new page!
 ```
 
-7. Replace the contents of `menu.yml` (or delete this file if you don't want a menu) with:
+7. Replace the contents of `./site/_data/menu.yml` (or delete this file if you don't want a navigation menu) with:
 ```
 - title: Welcome
   url: /
@@ -123,10 +133,11 @@ Welcome to my new page!
 
 8. Install [npm](https://docs.npmjs.com/cli/install) dependencies under `node_modules`
 ```
+cd ./site
 npm install
 ```
 
-9. Build the Jekyll site (located in `./_site`) and push it to `gh-pages`:
+9. Still inside the `./site` directory, build your site and push it to `gh-pages`:
 ```
 npx gulp deploy
 ```
@@ -135,8 +146,8 @@ npx gulp deploy
 
 ## Building locally
 
-1. Build and serve locally with `npx gulp`. This will generate the static site under
-   the `_site` folder which will be served at `localhost:4000`.
+1. Build and serve locally with `npx gulp` (inside `./site`). This will generate the static site inside
+   `./site/_site` which will be served at `localhost:4000`.
 
 
 ## Similar software
