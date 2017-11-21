@@ -6,11 +6,11 @@ import babelify from 'babelify'
 import browserify from 'browserify'
 import source from 'vinyl-source-stream'
 import buffer from 'vinyl-buffer'
-import child from 'child_process'
 import gutil from 'gulp-util'
 import del from 'del'
 import minify from 'gulp-babel-minify'
 import runSequence from 'run-sequence'
+import run from 'gulp-run'
 
 // sass to single css file
 gulp.task('sass', () => {
@@ -40,35 +40,19 @@ gulp.task('watch', () => {
   gulp.watch('_assets/js/*', ['js'])
 })
 
-/*
- * Jekyll
- */
-const jekyllLogger = (buffer) => {
-  buffer.toString()
-    .split(/\n/)
-    .forEach((message) => gutil.log('Jekyll: ' + message))
-}
-
-// bundle exec jekyll serve
-gulp.task('jekyll', () => {
-  const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'serve',
-    '--watch',
-    '--incremental',
-    '--drafts'
-  ])
-
-  jekyll.stdout.on('data', jekyllLogger)
-  jekyll.stderr.on('data', jekyllLogger)
-
-  return jekyll
+gulp.task('jekyll-build', () => {
+  let shellCommand = 'bundle exec jekyll build'
+  return gulp.src('./')
+  .pipe(run(shellCommand))
+  .on('error', gutil.log)
 })
 
-gulp.task('jekyll-build', () => {
-  const jekyll = child.spawn('bundle', ['exec', 'jekyll', 'build'])
-  jekyll.stdout.on('data', jekyllLogger)
-  jekyll.stderr.on('data', jekyllLogger)
-
-  return jekyll
+gulp.task('jekyll-serve', (done) => {
+  let shellCommand = 'bundle exec jekyll serve'
+  return gulp.src('./')
+  .pipe(run(shellCommand))
+  .on('error', gutil.log)
+  .on('close', done)
 })
 
 gulp.task('clean', () => {
@@ -79,7 +63,7 @@ gulp.task('clean', () => {
 })
 
 gulp.task('build', (cb) => {
-  runSequence(['js', 'sass'], 'jekyll-build', cb)
+  runSequence(['js', 'sass'], 'jekyll-build', 'clean', cb)
 })
 
 gulp.task('gh-pages', () => {
@@ -87,8 +71,10 @@ gulp.task('gh-pages', () => {
   .pipe(deploy())
 })
 
-gulp.task('deploy', () => {
-  runSequence('build', 'gh-pages')
+gulp.task('deploy', (cb) => {
+  runSequence(['js', 'sass'], 'jekyll-build', 'gh-pages', 'clean', cb)
 })
 
-gulp.task('default', ['js', 'sass', 'jekyll', 'watch']) // fix this
+gulp.task('default', (cb) => {
+  runSequence(['js', 'sass'], 'jekyll-serve', cb)
+})
