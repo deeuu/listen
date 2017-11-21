@@ -92,14 +92,14 @@
   /* This ID page wrapper is needed to get the correct javascript
   triggered with cached pages. I can't come up with anything cleaner at the
   moment */
-
   $('#id-{{ page.url  | slugify}}').on('pageshow', function () {
+
       if ('{{ page.layout }}' === 'soundboard')
-        window.listen.createSoundboard('{{ config | jsonify}}')
+        window.listen.createSoundboard('{{ config | jsonify}}', '{{ site.url }}')
       else if ('{{ page.layout }}' === 'mushra')
-        window.listen.createMUSHRA('{{ config | jsonify}}')
+        window.listen.createMUSHRA('{{ config | jsonify}}', '{{ site.url }}')
       else if ('{{ page.layout }}' === 'similarity')
-        window.listen.createMUSHRA('{{ config | jsonify}}')
+        window.listen.createMUSHRA('{{ config | jsonify}}', '{{ site.url }}')
   })
 </script>
 
