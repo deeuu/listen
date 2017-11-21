@@ -1,11 +1,20 @@
 # Listen
 
+__This project is currently in a state of heavy development and is not yet
+intended for deployment__
+
 - Listen uses [Jekyll](https://jekyllrb.com/) to generate a (mobile-friendly)
 static website that can be served locally or online using [GitHub pages](https://pages.github.com/)
 
 - The theme includes different interfaces for conducting listening tests, via the [Web-Audio
 API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API). At
-present, interfaces are limited to a soundboard and a [MUSHRA](https://en.wikipedia.org/wiki/MUSHRA)-inspired slider interface
+present, interfaces are limited to a soundboard and a [MUSHRA](https://en.wikipedia.org/wiki/MUSHRA)-inspired slider interface. Expected additions include:
+
+    - MUSHRA with vertical sliders
+    - N-Alternative Forced Choice
+    - Method-of-Adjustment
+    - AB Test
+    - Likert Scale
 
 - For online tests, [Staticman](https://github.com/eduardoboucas/staticman) is used to process results (submitted by participants) as data files and uploaded to your GitHub repository
 
@@ -62,22 +71,22 @@ make install
 
 ## Setup your site for GitHub pages
 
-1. [Create a new GitHub repository](https://github.com/new)
+The following assumes that your static site will live on the `gh-pages` branch
+of your website.
 
-2. Clone the `gh-pages` branch of this repository
+1. Clone the this repository
 ```
-git clone -b gh-pages https://github.com/deeuu/listen
+git clone https://github.com/deeuu/listen
 ```
 
-3. [Change the remote URL](https://help.github.com/articles/changing-a-remote-s-url/), e.g.
+2. [Change the remote URL](https://help.github.com/articles/changing-a-remote-s-url/), e.g.
 ```
 git remote set-url https://github.com/USERNAME/REPOSITORY.git
 ```
 
 3. Edit the following files:
     - `_config.yml` (optional): set the `title` of your site.
-    - `_config.yml`: replace the `url` and `github` repository items.
-    - `staticman.yml`: replace the `branch` item if you are not using `gh-pages`
+    - `_config.yml`: replace the `url` item.
 
 4. Add [Staticman](https://staticman.net/docs/) to your repository:
     - Go to your GitHub repository and hit the **Settings** page
@@ -88,49 +97,49 @@ git remote set-url https://github.com/USERNAME/REPOSITORY.git
     ```
 5. Update the homepage `index.md`.
 
-6. Create a new page under a new directory:
+6. Create a new page under a new subdirectory in the `_pages` folder:
 ```
 mkdir _pages/mynewpage && touch _pages/mynewpage/index.md
 ```
-and add the following [frontmatter](https://jekyllrb.com/docs/frontmatter/) and text:
+
+7. Add the following [frontmatter](https://jekyllrb.com/docs/frontmatter/) and text to `_pages/mynewpage/index.md`:
 ```
 ---
 layout: page
 permalink: /mynewpage/
-title: Greetings!
+title: Greetings
 ---
 
 Welcome to my new page!
 ```
 
-7. Update the `menu.yml` (if you want a menu):
+7. Replace the contents of `menu.yml` (or delete this file if you don't want a menu) with:
 ```
 - title: Welcome
   url: /
 - title: My new page
   url: /mynewpage/
-- title: Interface layouts
-  sublinks:
-    - title: MUSHRA
-      url: /mushra/
-    - title: Similarity
-      url: /similarity/
-    - title: Soundboard
-      url: /soundboard/
 ```
 
-## Building locally
-
-1. Install [npm](https://docs.npmjs.com/cli/install) dependencies under `node_modules`
+8. Install [npm](https://docs.npmjs.com/cli/install) dependencies under `node_modules`
 ```
 npm install
 ```
 
-2. Build and serve locally with `npx gulp`. This will generate the static site under
-   the`_site` folder which will be served at `localhost:4000`.
+9. Build the Jekyll site (located in `./_site`) and push it to `gh-pages`:
+```
+npx gulp deploy
+```
+
+10. Visit `https://USERNAME.github.io/REPOSITORY`
+
+## Building locally
+
+1. Build and serve locally with `npx gulp`. This will generate the static site under
+   the `_site` folder which will be served at `localhost:4000`.
 
 
-## Similar software and how 'listen' differs
+## Similar software
 
 - [Web Audio Evaluation Tool](https://github.com/BrechtDeMan/WebAudioEvaluationTool)
 - [webMUSHRA](https://github.com/audiolabs/webMUSHRA)
