@@ -2,9 +2,9 @@
   url: /
 - title: Interface layouts
   sublinks:
+    - title: Soundboard
+      url: /soundboard/
     - title: MUSHRA
       url: /mushra/
     - title: Similarity
       url: /similarity/
-    - title: Soundboard
-      url: /soundboard/
