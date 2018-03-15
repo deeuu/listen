@@ -33,7 +33,7 @@ Listen has been used in the following projects:
 
 1. Install `rbenv` to manage Ruby. You may need dependencies for `rbenv`, see [here](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-on-rails-with-rbenv-on-ubuntu-16-04)
 ```
-git clone https://github.com/rbenv/rbenv.git ~/.bashrc
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 source ~/.bashrc
