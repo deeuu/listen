@@ -65,16 +65,24 @@ gem install jekyll
 *Note: You can install the pre-built `Node.js` (with `npm` bundled) installer
 [here](https://nodejs.org/en/download/)*
 
-You can install `Node.js` locally from the [GitHub repository](rbenv global 2.4.1). For
-[example](https://gist.github.com/isaacs/579814)
+You can install `Node.js` and `npm` locally as follows (based on this
+[example](https://gist.github.com/isaacs/579814)):
+
 ```
 mkdir ~/local
 echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
 . ~/.bashrc
+
 git clone https://github.com/nodejs/node
 cd node
+git checkout v9.8.0
 ./configure --prefix=~/local
 make install
+cd ../
+
+git clone https://github.com/npm/npm
+cd npm
+make install 
 ```
 
 ## Setup your site for GitHub pages
