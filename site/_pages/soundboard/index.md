@@ -7,4 +7,4 @@ next_url: /mushra/
 ---
 # Soundboard
 
-A simple soundboard for your sampling pleasure:
+A simple soundboard for your listening pleasure:

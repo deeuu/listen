@@ -102,7 +102,7 @@ git remote set-url https://github.com/USERNAME/REPOSITORY.git
 
 3. Edit the following files:
     - `./site/_config.yml`: set the `title` of your site.
-    - `./site/_config.yml`: replace the `url` item.
+    - `./site/_config.yml`: replace the `url` item, i.e. `https://USERNAME.github.io/REPOSITORY`
 
 4. Add [Staticman](https://staticman.net/docs/) to your repository:
     - Go to your GitHub repository and hit the **Settings** page
