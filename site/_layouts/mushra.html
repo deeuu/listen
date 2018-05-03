@@ -9,13 +9,6 @@ layout: test
 
 <div class="mushra-references-container" data-role="controlgroup"></div>
 
-<button class="mushra-stop" data-inline="true">Stop</button>
-
-{% if config.allow_slider_sort %}
-<button class="mushra-sort" data-inline="true">Sort</button>
-{% endif %}
-
-
 {% if config.labels.size == 2 %}
 
 <table class='mushra-table-short'>
@@ -38,5 +31,11 @@ layout: test
 {% endif %}
 
 <div class="mushra-slider-container" data-role="ui-content"></div>
+
+<button class="mushra-stop" data-inline="true">Stop Audio</button>
+
+{% if config.allow_slider_sort %}
+<button class="mushra-sort" data-inline="true">Sort</button>
+{% endif %}
 
 </div>
