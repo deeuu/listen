@@ -64,7 +64,7 @@
          class="inner-collapsible menu"
          data-collapsed-icon="carat-d"
          data-expanded-icon="carat-u">
-    <h4>Interface layouts</h4>
+    <h4>Example interfaces</h4>
 
     <ul data-role="listview">
     
@@ -176,11 +176,15 @@
 
 <div class='mushra-container'>
 
-<button class="mushra-reference" data-inline="true">Reference</button>
+<div class="mushra-references-container" data-role="controlgroup"></div>
+
 <button class="mushra-stop" data-inline="true">Stop</button>
 
 
 <button class="mushra-sort" data-inline="true">Sort</button>
+
+
+
 
 
 <table class='mushra-table'>
@@ -199,6 +203,8 @@
 </tr>
 </table>
 
+
+
 <div class="mushra-slider-container" data-role="ui-content"></div>
 
 </div>
@@ -212,11 +218,9 @@
   $('#id-mushra').on('pageshow', function () {
 
       if ('mushra' === 'soundboard')
-        window.listen.createSoundboard('{"continuous_playback":true,"loop_playback":true,"randomise_slider_handle":true,"randomise_sounds_within_page":true,"randomise_pages":true,"show_number_on_slider":true,"must_play_all_samples_to_continue":true,"back_button_can_exit_test":true,"add_consistency_check":true,"allow_submission":false,"allow_slider_sort":true,"labels":["Bad","Poor","Fair","Good","Excellent"],"pages":[{"name":"Set 1","reference_url":"sounds/dog1.wav","sounds":[{"name":"Ref","url":"sounds/dog1.wav"},{"name":1,"url":"sounds/dog2.wav"},{"name":2,"url":"sounds/dog3.wav"}]},{"name":"Set 2","reference_url":"sounds/dog4.wav","sounds":[{"name":"Ref","url":"sounds/dog4.wav"},{"name":1,"url":"sounds/dog5.wav"},{"name":2,"url":"sounds/dog6.wav"}]}]}', 'https://deeuu.github.io/listen')
+        window.listen.createSoundboard('{"continuous_playback":true,"loop_playback":true,"randomise_slider_handle":true,"randomise_sounds_within_page":true,"randomise_pages":true,"show_number_on_slider":true,"must_play_all_samples_to_continue":true,"back_button_can_exit_test":true,"add_consistency_check":true,"allow_submission":false,"allow_slider_sort":true,"labels":["Bad","Poor","Fair","Good","Excellent"],"pages":[{"name":"Set 1","references":[{"button_label":"Reference 1","url":"sounds/dog1.wav"},{"button_label":"Reference 2","url":"sounds/dog2.wav"}],"sounds":[{"name":"Ref","url":"sounds/dog1.wav"},{"name":1,"url":"sounds/dog2.wav"},{"name":2,"url":"sounds/dog3.wav"}]},{"name":"Set 2","references":[{"button_label":"Reference","url":"sounds/dog4.wav"}],"sounds":[{"name":"Ref","url":"sounds/dog4.wav"},{"name":1,"url":"sounds/dog5.wav"},{"name":2,"url":"sounds/dog6.wav"}]}]}', 'https://deeuu.github.io/listen')
       else if ('mushra' === 'mushra')
-        window.listen.createMUSHRA('{"continuous_playback":true,"loop_playback":true,"randomise_slider_handle":true,"randomise_sounds_within_page":true,"randomise_pages":true,"show_number_on_slider":true,"must_play_all_samples_to_continue":true,"back_button_can_exit_test":true,"add_consistency_check":true,"allow_submission":false,"allow_slider_sort":true,"labels":["Bad","Poor","Fair","Good","Excellent"],"pages":[{"name":"Set 1","reference_url":"sounds/dog1.wav","sounds":[{"name":"Ref","url":"sounds/dog1.wav"},{"name":1,"url":"sounds/dog2.wav"},{"name":2,"url":"sounds/dog3.wav"}]},{"name":"Set 2","reference_url":"sounds/dog4.wav","sounds":[{"name":"Ref","url":"sounds/dog4.wav"},{"name":1,"url":"sounds/dog5.wav"},{"name":2,"url":"sounds/dog6.wav"}]}]}', 'https://deeuu.github.io/listen')
-      else if ('mushra' === 'similarity')
-        window.listen.createMUSHRA('{"continuous_playback":true,"loop_playback":true,"randomise_slider_handle":true,"randomise_sounds_within_page":true,"randomise_pages":true,"show_number_on_slider":true,"must_play_all_samples_to_continue":true,"back_button_can_exit_test":true,"add_consistency_check":true,"allow_submission":false,"allow_slider_sort":true,"labels":["Bad","Poor","Fair","Good","Excellent"],"pages":[{"name":"Set 1","reference_url":"sounds/dog1.wav","sounds":[{"name":"Ref","url":"sounds/dog1.wav"},{"name":1,"url":"sounds/dog2.wav"},{"name":2,"url":"sounds/dog3.wav"}]},{"name":"Set 2","reference_url":"sounds/dog4.wav","sounds":[{"name":"Ref","url":"sounds/dog4.wav"},{"name":1,"url":"sounds/dog5.wav"},{"name":2,"url":"sounds/dog6.wav"}]}]}', 'https://deeuu.github.io/listen')
+        window.listen.createMUSHRA('{"continuous_playback":true,"loop_playback":true,"randomise_slider_handle":true,"randomise_sounds_within_page":true,"randomise_pages":true,"show_number_on_slider":true,"must_play_all_samples_to_continue":true,"back_button_can_exit_test":true,"add_consistency_check":true,"allow_submission":false,"allow_slider_sort":true,"labels":["Bad","Poor","Fair","Good","Excellent"],"pages":[{"name":"Set 1","references":[{"button_label":"Reference 1","url":"sounds/dog1.wav"},{"button_label":"Reference 2","url":"sounds/dog2.wav"}],"sounds":[{"name":"Ref","url":"sounds/dog1.wav"},{"name":1,"url":"sounds/dog2.wav"},{"name":2,"url":"sounds/dog3.wav"}]},{"name":"Set 2","references":[{"button_label":"Reference","url":"sounds/dog4.wav"}],"sounds":[{"name":"Ref","url":"sounds/dog4.wav"},{"name":1,"url":"sounds/dog5.wav"},{"name":2,"url":"sounds/dog6.wav"}]}]}', 'https://deeuu.github.io/listen')
   })
 </script>
 
