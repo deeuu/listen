@@ -76,5 +76,5 @@ gulp.task('deploy', (cb) => {
 })
 
 gulp.task('default', (cb) => {
-  runSequence(['js', 'sass'], 'jekyll-serve', cb)
+  runSequence(['watch'], 'jekyll-serve', cb)
 })
