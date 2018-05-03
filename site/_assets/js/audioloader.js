@@ -149,7 +149,7 @@ AudioLoader.prototype.switchStop = function () {
   this.stop(false)
 }
 
-AudioLoader.prototype.stop = function (resetStartPosition) {
+AudioLoader.prototype.stop = function () {
   if (this.source) {
     var whenToStop = audioContext.currentTime + this.fadeTime
 
@@ -162,7 +162,7 @@ AudioLoader.prototype.stop = function (resetStartPosition) {
     this.gainNodeIndex = (this.gainNodeIndex + 1) % 2
     this.source = null
 
-    if (resetStartPosition) { this.currentIndex = null }
+    this.currentIndex = null
   }
 }
 
