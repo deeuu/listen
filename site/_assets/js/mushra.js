@@ -75,10 +75,6 @@ Mushra.prototype.configureButtons = function () {
     this.loader.stop()
   }.bind(this))
 
-  // Reference
-  activePage('.mushra-reference').on('click', function () {
-    this.loader.play(this.numberOfSounds)
-  }.bind(this))
 
   activePage('.mushra-sort').on('click', function () {
     this.sortSliders()
@@ -136,21 +132,57 @@ Mushra.prototype.loadPage = function () {
   }
 
   // Add the url to the reference audio. No need to store id here.
-  this.urls.push(this.config.siteURL + '/' + this.config.pages[this.currentPage].reference_url)
+  let references = this.config.pages[this.currentPage].references
+  for (let i = 0; i < references.length; ++i)
+  {
+    console.log(references[i].url)
+    this.urls.push(this.config.siteURL + '/' + references[i].url)
+  }
 
-    // Configure the audio loader
+  // Configure the audio loader
   this.loader = new AudioLoader(this.urls,
                                 this.config.continuous_playback,
                                 this.config.loop_playback)
 
   activePage('.mushra-container').hide()
+
   this.loader.load(this.setupGUI.bind(this))
 }
 
 Mushra.prototype.setupGUI = function () {
   activePage('.mushra-container').show()
 
+  this.createReferences()
   this.createSliders()
+}
+
+Mushra.prototype.createReferences = function () {
+
+  activePage('.mushra-references-container').empty()
+
+  let button = "<a class='mushra-reference'" +
+    "data-role='button' data-inline='true'>"
+
+  let references = this.config.pages[this.currentPage].references
+
+  for (let i = 0; i < references.length; ++i)
+  {
+    activePage('.mushra-references-container').append(button +
+      references[i].button_label + "</a>")
+  }
+
+  // Play references on click, we know they were added last
+  let mainObj = this
+
+  activePage('.mushra-reference').each(function (i) {
+
+    $(this).on('click', function () {
+      mainObj.loader.play(mainObj.numberOfSounds + i)
+    })
+  })
+
+  activePage('.mushra-references-container').trigger('create')
+  activePage('.mushra-references-container').enhanceWithin()
 }
 
 Mushra.prototype.createSliders = function () {

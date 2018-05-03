@@ -77,7 +77,9 @@ AudioLoader.prototype.load = function (callBack) {
   $.mobile.loading('show')
 
   this.allOk = false
-  for (var i = 0; i < this.urlList.length; ++i) { this.loadBuffer(this.urlList[i], i, callBack) }
+  for (var i = 0; i < this.urlList.length; ++i) {
+    this.loadBuffer(this.urlList[i], i, callBack)
+  }
 
   this.timerStarted = false
 }

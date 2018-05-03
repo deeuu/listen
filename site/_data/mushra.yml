@@ -18,7 +18,11 @@ labels:
     - 'Excellent'
 pages:
     - name: 'Set 1'
-      reference_url: sounds/dog1.wav
+      references: 
+          - button_label: 'Reference 1'
+            url: sounds/dog1.wav
+          - button_label: 'Reference 2'
+            url: sounds/dog2.wav
       sounds:
           - name: 'Ref'
             url: sounds/dog1.wav
@@ -27,7 +31,9 @@ pages:
           - name: 2
             url: sounds/dog3.wav
     - name: 'Set 2'
-      reference_url: sounds/dog4.wav
+      references:
+          - button_label: 'Reference'
+            url: sounds/dog4.wav
       sounds:
           - name: 'Ref'
             url: sounds/dog4.wav
