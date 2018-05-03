@@ -64,7 +64,8 @@ div.ui-content {
   text-align: center;
   display: table;
   margin: 0px auto;
-  width: 100%; }
+  width: 100%;
+  margin-bottom: 20px; }
 
 .mushra-slider-container .ui-slider-track {
   width: 95%;
