@@ -135,7 +135,6 @@ Mushra.prototype.loadPage = function () {
   let references = this.config.pages[this.currentPage].references
   for (let i = 0; i < references.length; ++i)
   {
-    console.log(references[i].url)
     this.urls.push(this.config.siteURL + '/' + references[i].url)
   }
 

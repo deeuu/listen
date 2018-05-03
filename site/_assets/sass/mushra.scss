@@ -58,3 +58,30 @@
 .mushra-slider-container .ui-slider-track a {
     pointer-events:auto !important;
 }
+
+.mushra-table-short {
+
+    table-layout: fixed;
+    font-size: 1em;
+
+    border-collapse:collapse;
+
+    width: 95%;
+    margin-left: 2.5%;
+
+    text-align: left;
+}
+
+.mushra-table-short th {
+    color: $heading-font-color;
+    border: 0px;
+}
+
+.mushra-table-short .left-label {
+    text-align: left;
+}
+
+.mushra-table-short .right-label {
+    text-align: right;
+    color: $heading-font-color;
+}

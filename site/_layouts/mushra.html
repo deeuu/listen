@@ -16,6 +16,17 @@ layout: test
 {% endif %}
 
 
+{% if config.labels.size == 2 %}
+
+<table class='mushra-table-short'>
+<tr>
+<th class='left-label'>{{ config.labels[0] }}</th>
+<th class='right-label'>{{ config.labels[1] }}</th>
+</tr>
+</table>
+
+{% else %}
+
 <table class='mushra-table'>
 <tr>
 {% for label in config.labels %}
@@ -23,6 +34,8 @@ layout: test
 {% endfor %}
 </tr>
 </table>
+
+{% endif %}
 
 <div class="mushra-slider-container" data-role="ui-content"></div>
 

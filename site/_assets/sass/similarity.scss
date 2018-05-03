@@ -1,29 +1,4 @@
 @import 'variables';
 @charset "UTF-8";
 
-.similarity-table {
 
-    table-layout: fixed;
-    font-size: 1em;
-
-    border-collapse:collapse;
-
-    width: 95%;
-    margin-left: 2.5%;
-
-    text-align: left;
-}
-
-.similarity-table th {
-    color: $heading-font-color;
-    border: 0px;
-}
-
-.similarity-table .left-label {
-    text-align: left;
-}
-
-.similarity-table .right-label {
-    text-align: right;
-    color: $heading-font-color;
-}

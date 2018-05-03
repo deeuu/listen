@@ -1,5 +1,5 @@
 ---
-layout: similarity
+layout: mushra
 config_file: similarity
 permalink: /similarity/
 title: Similarity
