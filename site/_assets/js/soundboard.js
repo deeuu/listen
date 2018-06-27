@@ -33,7 +33,7 @@ export function Soundboard (config) {
   activePage('.next').on('click', this.loader.stop.bind(this.loader))
 
   activePage('.back').on('click', function () {
-    this.loader.stop()
+    this.loader.stop(true)
 
     if (this.config.back_button_can_exit_test) { window.history.back() }
   }.bind(this))

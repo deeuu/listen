@@ -72,7 +72,7 @@ Mushra.prototype.configureButtons = function () {
 
   // Stop audio
   activePage('.mushra-stop').on('click', function () {
-    this.loader.stop()
+    this.loader.stop(true)
   }.bind(this))
 
 
@@ -82,7 +82,7 @@ Mushra.prototype.configureButtons = function () {
 }
 
 Mushra.prototype.onNextOrBackButtonClick = function (direction) {
-  if (this.loader) { this.loader.stop() }
+  if (this.loader) { this.loader.stop(true) }
 
   if (this.pageCounter === 0 && direction < 0) {
     if (this.config.back_button_can_exit_test) {
@@ -252,7 +252,7 @@ Mushra.prototype.playBuf = function (i) {
 }
 
 Mushra.prototype.sortSliders = function () {
-  this.loader.stop()
+  this.loader.stop(true)
 
   let values = []
   activePage('.ui-slider input').each(function (i) {

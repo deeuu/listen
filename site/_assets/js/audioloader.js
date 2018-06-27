@@ -86,6 +86,7 @@ AudioLoader.prototype.load = function (callBack) {
 
 AudioLoader.prototype.play = function (index) {
   if ((index !== this.currentIndex) && this.allOk) {
+
     this.switchStop()
 
         // get an AudioBufferSourceNode for playing our buffer
@@ -106,6 +107,7 @@ AudioLoader.prototype.play = function (index) {
         // ramping
     var currentGainNode = this.gainNodes[this.gainNodeIndex]
     this.source.connect(currentGainNode)
+
 
         // Playhead calculation (but not sample accurate)
     if (this.continuousPlayback) {
@@ -149,7 +151,7 @@ AudioLoader.prototype.switchStop = function () {
   this.stop(false)
 }
 
-AudioLoader.prototype.stop = function () {
+AudioLoader.prototype.stop = function (resetStartPosition) {
   if (this.source) {
     var whenToStop = audioContext.currentTime + this.fadeTime
 
@@ -162,7 +164,7 @@ AudioLoader.prototype.stop = function () {
     this.gainNodeIndex = (this.gainNodeIndex + 1) % 2
     this.source = null
 
-    this.currentIndex = null
+    if (resetStartPosition) {this.currentIndex = null}
   }
 }
 
