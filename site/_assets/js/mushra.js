@@ -158,7 +158,3 @@ Mushra.prototype.completeConfig = function () {
     setRating(i, $(this).val())
   })
 }
-
-PageManager.prototype.playBuf = function (i) {
-  this.loader.play(this.currentPageSoundOrder[i])
-}

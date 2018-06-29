@@ -175,3 +175,7 @@ PageManager.prototype.complete = function () {
     $.mobile.changePage(this.next_url)
   }
 }
+
+PageManager.prototype.playBuf = function (i) {
+  this.loader.play(this.currentPageSoundOrder[i])
+}
