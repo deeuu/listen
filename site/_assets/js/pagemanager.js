@@ -75,6 +75,12 @@ PageManager.prototype.configureButtons = function () {
     this.onNextOrBackButtonClick(-1)
   }.bind(this))
 
+  activePage('.early-finish').on('click', function (e) {
+    if (this.loader) { this.loader.stop(true) }
+    this.fillConfig()
+    this.complete()
+    $.mobile.changePage(this.next_url)
+  }.bind(this))
 }
 
 PageManager.prototype.onNextOrBackButtonClick = function (direction) {
