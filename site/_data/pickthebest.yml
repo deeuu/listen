@@ -1,0 +1,33 @@
+continuous_playback: true
+loop_playback: true
+randomise_sounds_within_page: true
+randomise_pages: true
+must_play_all_samples_to_continue: true
+back_button_can_exit_test: true
+allow_submission: false
+allow_ties: false
+allow_early_finish: true
+
+pages:
+    - name: 'Set 1'
+      references: 
+          - button_label: 'Reference'
+            url: sounds/dog1.wav
+      sounds:
+          - name: 'Ref'
+            url: sounds/dog1.wav
+          - name: 1
+            url: sounds/dog2.wav
+          - name: 2
+            url: sounds/dog3.wav
+    - name: 'Set 2'
+      references:
+          - button_label: 'Reference'
+            url: sounds/dog4.wav
+      sounds:
+          - name: 'Ref'
+            url: sounds/dog4.wav
+          - name: 1
+            url: sounds/dog5.wav
+          - name: 2
+            url: sounds/dog6.wav

@@ -1,6 +1,7 @@
 import {$, activePage} from './dollar.js'
 import {Soundboard} from './soundboard.js'
 import {Mushra} from './mushra.js'
+import {PickTheBest} from './pickthebest.js'
 
 function setup (config, siteURL) {
   // Undo previous bindings:
@@ -30,8 +31,13 @@ function createMUSHRA (config, siteURL) {
   return new Mushra(setup(config, siteURL))
 }
 
+function createPickTheBest (config, siteURL) {
+  return new PickTheBest(setup(config, siteURL))
+}
+
 // Expose globally
 window.listen = {
   createSoundboard: createSoundboard,
-  createMUSHRA: createMUSHRA
+  createMUSHRA: createMUSHRA,
+  createPickTheBest: createPickTheBest
 }
