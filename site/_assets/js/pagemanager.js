@@ -47,6 +47,10 @@ export function PageManager (config) {
   this.loadPage()
 }
 
+PageManager.prototype.interfaceDependentConditionsMet = function () {
+  return true
+}
+
 PageManager.prototype.configureButtons = function () {
   // Store the next_url and then remove
   this.next_url = activePage('.next').attr('href')
@@ -57,7 +61,8 @@ PageManager.prototype.configureButtons = function () {
       this.loader.haveAllBuffersPlayed() ||
       !this.config.must_play_all_samples_to_continue ||
       this.have_seen_this_page_before[this.pageCounter + 1]) {
-      this.onNextOrBackButtonClick(1)
+        if (this.interfaceDependentConditionsMet())
+          this.onNextOrBackButtonClick(1)
     } else {
       activePage('.listen-to-all-samples-popup').popup('open')
       setTimeout(function () {

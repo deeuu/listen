@@ -27,7 +27,16 @@
            ui-corner-all ui-btn-icon-right ui-icon-carat-r next'>
     Next
 </a>
+
 </div>
+
+{% if config.allow_early_finish %}
+<div data-role="footer" data-id="footer" data-position="fixed">
+<button class="early-finish ui-btn-inline ui-mini" data-inline="true">Finish Early</button>
+</div>
+{% endif %}
+
+
 
 <!-- Popup window if all listener tries to move on before listening to all samples -->
 <div data-role="popup" class="listen-to-all-samples-popup" data-position-to="window" data-transition="turn">
@@ -88,6 +97,8 @@
 {{ content }}
 </div>
 
+
+
 <script type="text/javascript">
   /* This ID page wrapper is needed to get the correct javascript
   triggered with cached pages. I can't come up with anything cleaner at the
@@ -98,6 +109,8 @@
         window.listen.createSoundboard('{{ config | jsonify}}', '{{ site.url }}')
       else if ('{{ page.layout }}' === 'mushra')
         window.listen.createMUSHRA('{{ config | jsonify}}', '{{ site.url }}')
+      else if ('{{ page.layout }}' === 'pickthebest')
+        window.listen.createPickTheBest('{{ config | jsonify}}', '{{ site.url }}')
   })
 </script>
 
