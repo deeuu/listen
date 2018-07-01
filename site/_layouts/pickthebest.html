@@ -1,0 +1,25 @@
+---
+layout: test
+---
+
+{{ content }}
+
+{% assign config = site.data[page.config_file] %}
+<div class='interface-container'>
+
+<div class="references-container" data-role="controlgroup"></div>
+
+<div class="button-container" data-role="ui-content"></div>
+
+<button class="stop-audio" data-inline="true">Stop Audio</button>
+
+</div>
+
+<!-- Popup windows-->
+<div data-role="popup" class="ties-warning-popup" data-position-to="window" data-transition="turn">
+    <p>Ties are not allowed, please check only one box</p>
+</div>
+
+<div data-role="popup" class=".no-selection-warning-popup" data-position-to="window" data-transition="turn">
+    <p>Please check one box before continuing</p>
+</div>
