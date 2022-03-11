@@ -29,7 +29,7 @@ Expected additions include:
 Listen has been used in the following projects:
 
 - [Perceptual evaluation of source separation algorithms](https://cvssp.github.io/perceptual-study-source-separation/)
-- [Perceptual Evaluation of Source Separation for Remixing Music](https://hagenw.github.io/2017/evaluation_of_source_separation_for_remixing/)
+- [Perceptual Evaluation of Source Separation for Remixing Music](https://hagenw.github.io/2017/evaluation-of-source-separation-for-remixing/)
 
 ## Installation
 
